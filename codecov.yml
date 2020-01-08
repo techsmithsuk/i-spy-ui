@@ -1,7 +1,10 @@
 codecov:
     require_ci_to_pass: yes
 
-coverage:   
+coverage: 
+    range: "90...100"
+    ignore:
+        - "src/index.tsx"  
     status:
         project:
             default:
@@ -17,10 +20,9 @@ coverage:
             if_ci_failed: error
             informational: False
             only_pulls: false
-    
+            
 
-ignore:
-    - "src/index.tsx"
+
     
 status:
     project: yes
