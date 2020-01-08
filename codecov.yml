@@ -5,7 +5,7 @@
 coverage:  
     precision: 2  
     round: nearest  
-    target: "100...100" 
+    target: "99...100" 
     ignore:      
         - "src/index.tsx"  
 
