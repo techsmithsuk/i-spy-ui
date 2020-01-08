@@ -17,6 +17,6 @@ comment:
     require_changes: no
 
 ignore:
-    - "src/index.tsx"
+    - "index.tsx"
           
 
