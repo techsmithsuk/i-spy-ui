@@ -1,5 +1,8 @@
 codecov:
     require_ci_to_pass: yes
+
+ignore:
+    - "src\index.tsx"
     
 coverage:
     precision: 2
@@ -25,5 +28,3 @@ comment:
     require_changes: no
           
 
-ignore:
-    - "src\index.tsx"
