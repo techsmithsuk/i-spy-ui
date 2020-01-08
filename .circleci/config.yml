@@ -43,7 +43,4 @@ jobs:
           conf: codecov.yml
           file: coverage/clover.xml
 
-      coverage: 
-        status:
-          project: 
-            target: 100%
+      
