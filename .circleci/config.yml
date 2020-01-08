@@ -38,7 +38,7 @@ jobs:
 
       # run tests!
       - run: npm test
-      - run: test-coverage
+      - run: npm test -- --coverage
 
       - codecov/upload:
           file: clover.xml 
