@@ -40,4 +40,5 @@ jobs:
       - run: npm test -- --coverage
 
       - codecov/upload:
+          conf: codecov.yml
           file: coverage/clover.xml
