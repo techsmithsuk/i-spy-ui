@@ -4,7 +4,10 @@ codecov:
 coverage:
     precision: 2
     round: down
-    range: "100"
+    range: "90...100"
+
+ignore:
+    - "index.tsx"
     
 status:
     project: yes
@@ -16,7 +19,10 @@ comment:
     behavior: default
     require_changes: no
 
-ignore:
-    - "index.tsx"
-          
-
+parsers:
+    gcov:
+        branch_detection:
+        conditional: yes
+        loop: yes
+        method: no
+        macro: no
