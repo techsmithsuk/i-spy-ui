@@ -1,0 +1,6 @@
+coverage:  
+    precision: 2  
+    round: nearest  
+    range: "100...100" 
+    ignore:      
+        - "src/index.tsx"  
