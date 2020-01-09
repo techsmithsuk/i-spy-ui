@@ -17,7 +17,7 @@ export function Navbar() {
                         <Link to="/users" className="nav-element">Manage Users</Link>
                     </div>
                     <div className="super-admin">
-                        <Link to="/users" className="nav-element">Admin Settings</Link>
+                        <Link to="/settings" className="nav-element">Admin Settings</Link>
                     </div>
                 </div>
                 <div className="logOut">
