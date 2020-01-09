@@ -1,0 +1,27 @@
+@import '../general-styling.scss';
+
+nav {
+    width:100%;
+    background-color: $black-color;
+    font-size: 22px;
+    padding: $standard-padding;  
+    display: flex;
+    justify-content: space-between;
+    font-family: $nav-text;
+}
+
+.main-nav-elements {
+    display: flex;
+}
+
+.nav-element {
+    text-decoration: none;
+    color: $white-color;
+    padding: 0 40px;
+    &:hover {
+        color: $filter-color;
+        transition-duration: 1s;
+    }
+}
+
+
