@@ -1,0 +1,13 @@
+@import './general-styling.scss';
+.personCard {
+    font-family: $body-text;
+    font-size: 20px;
+    width: 200px;
+    text-align: center;
+    img {
+       height: 300px;
+       margin-bottom: 5px;
+    }
+    
+    
+}
