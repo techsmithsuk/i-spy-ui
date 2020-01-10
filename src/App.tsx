@@ -10,6 +10,7 @@ const App: React.FC = () => {
     <Router>
       <Navbar/>
       <Person/>
+      <Suspect/>
     </Router>
   );
 }

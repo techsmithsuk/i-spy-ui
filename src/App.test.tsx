@@ -11,8 +11,3 @@ test('renders person card', () => {
   const Person = document.createElement('Person');
   ReactDOM.render(<App />, Person);
 });
-
-test('renders suspect', () => {
-  const Suspect = document.createElement('Suspect');
-  ReactDOM.render(<App />, Suspect);
-});
