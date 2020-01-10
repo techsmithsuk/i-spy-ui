@@ -11,3 +11,4 @@ test('renders person card', () => {
   const Person = document.createElement('Person');
   ReactDOM.render(<App />, Person);
 });
+
