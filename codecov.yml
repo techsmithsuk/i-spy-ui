@@ -21,4 +21,4 @@ coverage:
 
     ignore:      
         - "src/index.tsx"  
-        - "src/helpers/globalVariables.tsx"
+        - "src/helpers/globalVariables.ts"
