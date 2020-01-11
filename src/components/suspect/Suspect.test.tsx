@@ -1,20 +1,14 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import ReactDOM from 'react-dom';
+
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+configure({ adapter: new Adapter() });
+
+import { mount } from 'enzyme';
 
 import Suspect from '../suspect/Suspect';
 
-describe("Suspect", () => {
-    it("Should render without errors", () => {
-        const component = renderer.create(
-            <Suspect/>
-        );
-
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+test('Suspect', done => {
+    const wrapper = mount(<Suspect/>);
+    setImmediate(done);
 });
-
-test('renders person card', () => {    
-    ReactDOM.render(<Suspect />, document.createElement('Suspect'));
-  });
