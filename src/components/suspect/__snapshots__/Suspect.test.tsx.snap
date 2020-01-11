@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Suspect Should render without errors 1`] = `
+<div>
+  Fetching data...
+</div>
+`;
