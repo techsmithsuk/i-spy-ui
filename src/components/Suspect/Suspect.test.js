@@ -29,6 +29,8 @@ describe("Suspect", () => {
         const component = renderer.create(<Suspect/>);
         await flushPromises();
         component.update();
+        await flushPromises();
+        component.update();
         const asJson = component.toJSON();
         expect.objectContaining({
             name: expect.any(String)
