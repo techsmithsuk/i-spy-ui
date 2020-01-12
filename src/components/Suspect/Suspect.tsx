@@ -1,34 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import asyncJSONfetch from '../general/helpers/asyncJSONFetcher';
+import asyncJSONFetch from '../general/helpers/asyncJSONFetcher';
 
 interface SuspectInfo {
     name: string;
 }
 
+const defaultSuspect = {
+    name: "Fetching data..."
+}
+
 export default function Suspect() {
 
-    // const [suspectInfo, setSuspectInfo] = useState<SuspectInfo | null>(null);
+    const [suspectInfo, setSuspectInfo] = useState<SuspectInfo>(defaultSuspect);
 
-    // const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect"
+    const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect"
 
-    // useEffect(
-    //     () => { 
-    //     asyncJSONfetch(url)
-    //     .then((jsonResponse: React.SetStateAction<SuspectInfo | null>) => setSuspectInfo(jsonResponse))
-    // }, [url]);
+    useEffect(
+        () => { 
+        asyncJSONFetch(url)
+        .then((jsonResponse) => setSuspectInfo(jsonResponse))
+    }, [url]);    
 
-    // if (!suspectInfo){
-    //     return (
-    //         <div>
-    //             Fetching data...
-    //         </div>
-    //     )
-    // }
-
+    // TODO Check with Mike if this does what I think it does
+    // This may now be un-needed if default state above is a correct use
     return (
-        <div>
-            Testing
-            {/* {suspectInfo.name} */}
+        <div>   
+            {
+                suspectInfo ? (
+                    <div>
+                        {suspectInfo.name}
+                    </div>
+                ) : (
+                    <div>
+                        Fetching data...
+                    </div>
+                )
+            }  
         </div>
     )
 }
