@@ -17,12 +17,10 @@ export default function Suspect() {
         asyncJSONFetch(url)            
             .then(jsonResponse => setSuspectInfo(jsonResponse))   
             .catch(() => setError(true))          
-    }, [url]);
+    }, [url]);    
 
-    console.log(error);
-
-    if (error) {
-        return <div>Oh No!!! There was an error</div>
+    if (error === true) { 
+        return <div>Oh No!!! There was an error</div> 
     }
 
     if (!suspectInfo){
