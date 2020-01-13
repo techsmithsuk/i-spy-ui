@@ -1,32 +1,39 @@
 import React from "react";
-import renderer from 'react-test-renderer';
-import ReactDOM from 'react-dom';
-import { act, render, waitForDomChange } from "@testing-library/react"
-import { mount } from 'enzyme';
-import { configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-configure({ adapter: new Adapter() });
+import { render, wait } from "@testing-library/react"
 import Suspect from './Suspect';
-import asyncJSONFetch from '../general/helpers/asyncJSONFetcher';
-import fetch from 'jest-fetch-mock';
 
-// Tests Nothing Found
-test('Shows Fetching data... when rendering Suspect', () => {
-    const component = renderer.create(<Suspect/>)    
-    expect(component).toContain(<div>Fetching data...</div>);
+
+function mockSuccessfulFetch(responseBody) {
+    const response = Promise.resolve({
+        json: () => Promise.resolve(responseBody)
+    })
+    jest.spyOn(global, 'fetch').mockImplementation(() => response);
+}
+
+function mockFailedFetch() {
+    const response = Promise.reject();
+    jest.spyOn(global, 'fetch').mockImplementation(() => response);
+}
+
+describe('testing api', () => {
+
+    afterEach(() => {
+      global.fetch.resetMocks()
+    })
+
+    it("should render the response when returns correctly", async () => {
+        mockSuccessfulFetch({name: "alan"});
+
+        const suspect = render(<Suspect/>);
+        expect(suspect.getByText("Fetching data...")).toBeInTheDocument();
+        await wait(() => expect(suspect.getByText("alan")).toBeInTheDocument());
+    });
+
+    it("should shows an error message if the api call fails", async () => {
+        mockFailedFetch();
+
+        const suspect = render(<Suspect/>);
+        expect(suspect.getByText("Fetching data...")).toBeInTheDocument();
+        await wait(() => expect(suspect.getByText("Oh No!!! There was an error")).toBeInTheDocument());
+    });
 });
-
-// Tests Error State
-
-
-
-// Tests Returns Useful Data
-// test('Shows Useful data... after rendering Suspect', async () => {
-
-//     fetch.mockResponse(JSON.stringify({name: 'Allen'}));
-    
-//     const component = renderer.create(<Suspect/>);
-
-//     expect(component).toBe(<div>Allen</div>);   
-    
-// });

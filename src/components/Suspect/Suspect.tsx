@@ -9,26 +9,27 @@ interface SuspectInfo {
 export default function Suspect() {
 
     const [suspectInfo, setSuspectInfo] = useState<SuspectInfo | null>(null);
+    const [error, setError] = useState(false);
 
     const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect"
 
-    useEffect(
-        () => { 
+    useEffect(() => { 
         asyncJSONFetch(url)
-        .then((jsonResponse: React.SetStateAction<SuspectInfo | null>) => setSuspectInfo(jsonResponse))
+            .then(jsonResponse => setSuspectInfo(jsonResponse))
+            .catch(error => setError(true))
     }, [url]);
+
+    if (error) {
+        return <div>Oh No!!! There was an error</div>
+    }
 
     if (!suspectInfo){
         return (
-            <div>
-                Fetching data...
-            </div>
+            <div>Fetching data...</div>
         )
     }
 
     return (
-        <div>
-            {suspectInfo.name}
-        </div>
+        <div>{suspectInfo.name}</div>
     )
 }
