@@ -9,17 +9,17 @@ configure({ adapter: new Adapter() });
 import Suspect from './Suspect';
 import asyncJSONFetch from '../general/helpers/asyncJSONFetcher';
 
-test('renders suspect', () => {
-    const container = document.createElement('Container');
-    ReactDOM.render(<Suspect />, container);
-  });
+// test('renders suspect', () => {
+//     const container = document.createElement('Container');
+//     ReactDOM.render(<Suspect />, container);
+// });
 
-it("renders Fetching Data... Whilst Waiting", async () => {   
-    await act(async () => {
-        const { getByText } = render(<Suspect/>)
-        getByText("Fetching data...")
-    })
-})
+// it("renders Fetching Data... Whilst Waiting", async () => {   
+//     await act(async () => {
+//         const { getByText } = render(<Suspect/>)
+//         getByText("Fetching data...")
+//     })
+// })
 
 // https://stackoverflow.com/questions/44741102/how-to-make-jest-wait-for-all-asynchronous-code-to-finish-execution-before-expec
 const flushPromises = () => new Promise(setImmediate);
@@ -27,8 +27,6 @@ const flushPromises = () => new Promise(setImmediate);
 describe("Suspect", () => {
     it("Should render without errors", async () => {
         const component = renderer.create(<Suspect/>);
-        await flushPromises();
-        component.update();
         await flushPromises();
         component.update();
         const asJson = component.toJSON();
