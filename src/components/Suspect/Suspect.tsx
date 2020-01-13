@@ -19,17 +19,33 @@ export default function Suspect() {
             .catch(() => setError(true))          
     }, [url]);    
 
-    if (error === true) { 
-        return <div>Oh No!!! There was an error</div> 
-    }
+    // if (error === true) { 
+    //     return <div>Oh No!!! There was an error</div> 
+    // }
 
-    if (!suspectInfo){
-        return (
-            <div>Fetching data...</div>
-        )
-    }
-
+    // if (!suspectInfo){
+    //     return (
+    //         <div>Fetching data...</div>
+    //     )
+    // }
+    
     return (
-        <div>{suspectInfo.name}</div>
+        <div>   
+            {
+                error ? (                    
+                    <div>Oh No!!! There was an error</div> 
+                ) :
+
+                suspectInfo ? (
+                    <div>
+                        {suspectInfo.name}
+                    </div>
+                ) : (
+                    <div>
+                        Fetching data...
+                    </div>
+                )
+            }  
+        </div>
     )
 }
