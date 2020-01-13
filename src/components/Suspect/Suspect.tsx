@@ -25,17 +25,7 @@ export default function Suspect() {
     // This may now be un-needed if default state above is a correct use
     return (
         <div>   
-            {
-                suspectInfo ? (
-                    <div>
-                        {suspectInfo.name}
-                    </div>
-                ) : (
-                    <div>
-                        Fetching data...
-                    </div>
-                )
-            }  
+            {suspectInfo.name}
         </div>
     )
 }
