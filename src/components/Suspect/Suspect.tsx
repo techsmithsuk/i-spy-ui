@@ -9,9 +9,9 @@ interface SuspectInfo {
 export default function Suspect() {
 
     const [suspectInfo, setSuspectInfo] = useState<SuspectInfo | null>(null);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState<boolean>(false);
 
-    const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect"
+    const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect";
     
     useEffect(() => { 
         asyncJSONFetch(url)            
@@ -21,16 +21,12 @@ export default function Suspect() {
     }, [url]);
 
     if (error) {
-        return <div>Oh No!!! There was an error</div>
+        return <div>Oh No!!! There was an error</div>;
     }
 
     if (!suspectInfo){
-        return (
-            <div>Fetching data...</div>
-        )
+        return <div>Fetching data...</div>;
     }
 
-    return (
-        <div>{suspectInfo.name}</div>
-    )
+    return <div>{suspectInfo.name}</div>;
 }

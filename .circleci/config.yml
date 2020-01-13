@@ -41,6 +41,6 @@ jobs:
 
       - codecov/upload:
           conf: codecov.yml
-          file: coverage/clover.xml
+          file: coverage/coverage-final.json
 
       

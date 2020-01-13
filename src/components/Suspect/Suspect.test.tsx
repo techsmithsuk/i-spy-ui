@@ -8,12 +8,12 @@ describe('testing api', () => {
     afterEach(() => {
         // @ts-ignore
       global.fetch.resetMocks()
-    })
+    });
 
     it("should render Fetching data... while waiting", () => {
         const suspect = render(<Suspect/>);
         expect(suspect.getByText("Fetching data...")).toBeInTheDocument();
-    })
+    });
 
 
     it("should render the response when returns correctly", async () => {
