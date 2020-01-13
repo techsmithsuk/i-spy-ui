@@ -16,9 +16,10 @@ export default function Suspect() {
     useEffect(() => { 
         asyncJSONFetch(url)            
             .then(jsonResponse => setSuspectInfo(jsonResponse))   
-            .catch(() => setError(true))         
-            
+            .catch(() => setError(true))          
     }, [url]);
+
+    console.log(error);
 
     if (error) {
         return <div>Oh No!!! There was an error</div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, wait } from "@testing-library/react"
 import Suspect from './Suspect';
-import {mockSuccessfulFetch, mockFailedFetch} from '../general/helpers/mockFetch';
+import {mockSuccessfulFetch, mockFetchError} from '../general/helpers/mockFetch';
 
 describe('testing api', () => {
 
@@ -24,7 +24,7 @@ describe('testing api', () => {
     });
 
     it("should shows an error message if the api call fails", async () => {
-        mockFailedFetch();
+        mockFetchError();
 
         const suspect = render(<Suspect/>);
         await wait(() => expect(suspect.getByText("Oh No!!! There was an error")).toBeInTheDocument());

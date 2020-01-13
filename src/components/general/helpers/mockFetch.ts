@@ -7,10 +7,9 @@ export function mockSuccessfulFetch(responseBody: any) {
     jest.spyOn(global, 'fetch').mockImplementation(() => response);
 }
 
-export function mockFailedFetch() {
-    //const response = Promise.reject();
+export function mockFetchError() {    
     // @ts-ignore
     jest.spyOn(global, 'fetch').mockImplementation(() => {
-        throw new Error('error')
+        new Error('error')
     });
 }
