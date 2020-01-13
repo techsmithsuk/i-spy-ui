@@ -12,11 +12,12 @@ export default function Suspect() {
     const [error, setError] = useState(false);
 
     const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect"
-
+    
     useEffect(() => { 
-        asyncJSONFetch(url)
-            .then(jsonResponse => setSuspectInfo(jsonResponse))
-            .catch(error => setError(true))
+        asyncJSONFetch(url)            
+            .then(jsonResponse => setSuspectInfo(jsonResponse))   
+            .catch(() => setError(true))         
+            
     }, [url]);
 
     if (error) {
