@@ -9,8 +9,27 @@ const App: React.FC = () => {
   return (
     <Router>
       <Navbar/>
-      <Person/>
-      <Suspect/>
+        <Switch>
+
+          <Route path="/login">
+            {/* Login Page */}
+          </Route>
+
+          <Route path="/admin">
+            {/* Admin Page */}
+          </Route>
+
+          <Route path="/">
+            {/* Public Page */}
+
+            {/* Testing Components */}
+            <Person/>
+            <Suspect/>
+
+          </Route>          
+
+        </Switch>
+
     </Router>
   );
 }
