@@ -11,7 +11,7 @@ export default function Suspect() {
     const [suspectInfo, setSuspectInfo] = useState<SuspectInfo | null>(null);
     const [error, setError] = useState(false);
 
-    const url: string = "https://techswitch-i-spy-api-staging.herokuapp.com/suspect"
+    const url: string = `${process.env.REACT_APP_API_URL}/suspect/1`
     
     useEffect(() => { 
         asyncJSONFetch(url)            
