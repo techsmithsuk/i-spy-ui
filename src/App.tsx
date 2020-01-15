@@ -22,7 +22,7 @@ const App: React.FC = () => {
           </Route>
 
           <Route path="/">
-            <Navbar/>
+            
             <div>Public Page</div>
            
             <Person/>
