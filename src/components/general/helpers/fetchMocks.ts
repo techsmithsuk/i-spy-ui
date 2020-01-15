@@ -1,21 +1,17 @@
 
 export function mockSuccessfulFetch(responseBody: any) {
-    const response = Promise.resolve({
-        json: () => Promise.resolve(responseBody)
-    })
+    const response = Promise.resolve(
+        {
+            json: () => Promise.resolve(responseBody)
+        }
+    );
     // @ts-ignore
     jest.spyOn(global, 'fetch').mockImplementation(() => response);
 }
 
-// export function mockFailedFetch() {
-//     const response = Promise.reject();
-//     // @ts-ignore
-//     jest.spyOn(global, 'fetch').mockImplementation(() => response);
-// } 
-
-export function mockFetchError() {    
+export function mockFailedFetch() {
+    const response = Promise.reject();
     // @ts-ignore
-    jest.spyOn(global, 'fetch').mockImplementation(() => {
-        new Error('error')
-    });
-}
+    jest.spyOn(global, 'fetch').mockImplementation(() => response);
+} 
+

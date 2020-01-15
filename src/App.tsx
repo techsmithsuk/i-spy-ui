@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
 import {Navbar} from './components/general/navbar/Navbar';
-import {Person} from './components/general/Person';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Homepage } from './components/general/AdminHomepage/Homepage';
 import Suspect from './components/Suspect/Suspect';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      
+    <Router>      
         <Switch>
 
           <Route path="/login">
@@ -31,7 +30,6 @@ const App: React.FC = () => {
           </Route>          
 
         </Switch>
-
     </Router>
   );
 }
