@@ -32,14 +32,19 @@ export function Homepage(){
     }
 
     return (
-        <div>
+        <div className="homepage">
 
-            <ol className="personCardList"> 
-                {suspectList.map(suspect => <div className ="child" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
+            <h1>FBI Most Wanted</h1>
+
+            <ol className="suspectCardList"> 
+                {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
             </ol>
 
-            <button>UPDATE LIST</button>
-            <Link to="/new_suspect_profile">ADD NEW PROFILE</Link>
+            <div className="buttons">
+                <button className="indivButton">UPDATE LIST</button>
+                <Link className="indivButton" to="/new_suspect_profile">ADD NEW PROFILE</Link>
+            </div>
+            
             <SuspectTrial/>
 
         </div>
