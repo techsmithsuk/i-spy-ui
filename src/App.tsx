@@ -22,9 +22,8 @@ const App: React.FC = () => {
 
           <Route path="/">
             
-            <div>Public Page</div>
-           
-            <Person/>
+            <div>Public Page</div>           
+            
             <Suspect/>
 
           </Route>          
