@@ -14,3 +14,4 @@ export function mockFailedFetch() {
     // @ts-ignore
     jest.spyOn(global, 'fetch').mockImplementation(() => response);
 } 
+
