@@ -23,16 +23,17 @@ describe('testing api', () => {
         let suspectList :any[] = new Array();
 
         suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
         mockSuccessfulFetch(suspectList);
         const history = createBrowserHistory();
         const homepage = render(<Router history={history}><Homepage/></Router>);
-        await wait(() => expect(homepage.getAllByText("Harry Potter")).toHaveLength(2));
+        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
+        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
+        await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
     });
 
 
-    
     it("should shows an error message if the api call fails", async () => {
         mockFailedFetch();
 

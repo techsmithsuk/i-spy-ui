@@ -8,9 +8,16 @@ import Suspect from './components/Suspect/Suspect';
 const App: React.FC = () => {
   return (
     <Router>
+
       <Navbar/>
-      <Homepage/>
-      <Suspect/>
+      <Switch>
+
+        <Route path="/">
+          <Homepage/>
+        </Route>
+
+      </Switch>
+      
     </Router>
   );
 }

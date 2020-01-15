@@ -1,14 +1,35 @@
 @import '../general-styling.scss';
 
-.personCardList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-left: 0;
-}
+.homepage{
+    .suspectCardList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-left: 0;
+    }
 
-.child{
-    flex-basis: 20%;
-    display: flex;
-    justify-content: center;
+    .suspectCardIndiv{
+        flex-basis: 20%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .buttons{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .indivButton{
+            background-color: $button-color;
+            color: $white-color;
+            border: none;
+            text-decoration: none;
+            font-family: $button-text;
+            font-size: 40px;
+            text-align: center;
+            margin:10px;
+            padding: 5px 0;
+            width:500px;
+        }
+
+    }
 }

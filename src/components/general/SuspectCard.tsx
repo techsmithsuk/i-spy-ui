@@ -1,14 +1,14 @@
 import React from 'react';
-import './person.scss';
+import './suspectCard.scss';
 
-interface PersonProps{
+interface SuspectCardProps{
     name :string;
     image :string;
 }
 
-export function Person(props :PersonProps) {
+export function SuspectCard(props :SuspectCardProps) {
     return (
-    <div className="personCard">
+    <div className="suspectCard">
         <img src={props.image} alt="Image of Suspect"/>
         {props.name}
     </div>

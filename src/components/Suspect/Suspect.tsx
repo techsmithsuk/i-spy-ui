@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import asyncJSONFetch from '../general/helpers/asyncJSONFetcher';
 
 
-interface SuspectInfo {
+interface SuspectTrialInfo {
     name: string;
 }
 
-export default function Suspect() {
+export default function SuspectTrial() {
 
-    const [suspectInfo, setSuspectInfo] = useState<SuspectInfo | null>(null);
+    const [suspectInfo, setSuspectInfo] = useState<SuspectTrialInfo | null>(null);
     const [error, setError] = useState(false);
 
-    const url: string = `${process.env.REACT_APP_API_URL}/suspect/1`
+    const url: string = `${process.env.REACT_APP_API_URL}/suspect_test`
     
     useEffect(() => { 
         asyncJSONFetch(url)            

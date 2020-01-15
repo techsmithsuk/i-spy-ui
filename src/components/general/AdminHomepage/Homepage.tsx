@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import {Person} from '../Person';
+import {SuspectCard} from '../SuspectCard';
 import { Link } from "react-router-dom";
 import './homepage.scss';
 import asyncJSONFetch from '../helpers/asyncJSONFetcher';
-import { SuspectList } from '../helpers/SuspectInterfaces';
+import { Suspect } from '../helpers/SuspectInterfaces';
+import SuspectTrial from '../../Suspect/Suspect';
 
 
 export function Homepage(){
     
-    const [suspectList, setSuspectList] = useState<SuspectList[] | null>(null);
+    const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
     let pageNumber :number = 1;
     const url: string = `${process.env.REACT_APP_API_URL}/suspects?page=${pageNumber}`
@@ -34,11 +35,12 @@ export function Homepage(){
         <div>
 
             <ol className="personCardList"> 
-                {suspectList.map(suspect => <div className ="child"><Person name = {suspect.name} image = {suspect.imageUrl}/></div>)}
+                {suspectList.map(suspect => <div className ="child" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
             </ol>
 
             <button>UPDATE LIST</button>
             <Link to="/new_suspect_profile">ADD NEW PROFILE</Link>
+            <SuspectTrial/>
 
         </div>
     )
