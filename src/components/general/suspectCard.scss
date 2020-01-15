@@ -1,13 +1,13 @@
 @import './general-styling.scss';
-.personCard {
+
+.suspectCard {
     font-family: $body-text;
     font-size: 20px;
     width: 200px;
     text-align: center;
+    margin: 1em;
     img {
-       height: 300px;
+    width:100%;
        margin-bottom: 5px;
     }
-    
-    
 }

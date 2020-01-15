@@ -1,0 +1,42 @@
+@import '../general-styling.scss';
+
+.homepage{
+
+    h1{
+        font-family: $header-text;
+        font-size: 60px;
+        text-align: center;
+        color:$blue-color
+    }
+
+    .suspectCardList {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .suspectCardIndiv{
+        flex-basis: 20%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .buttons{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .indivButton{
+            background-color: $button-color;
+            color: $white-color;
+            border: none;
+            text-decoration: none;
+            font-family: $button-text;
+            font-size: 40px;
+            text-align: center;
+            margin:10px;
+            padding: 5px 0;
+            width:500px;
+        }
+    }
+}
