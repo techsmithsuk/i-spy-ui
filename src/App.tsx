@@ -3,7 +3,7 @@ import './App.css';
 import {Navbar} from './components/general/navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Homepage } from './components/general/AdminHomepage/Homepage';
-import Suspect from './components/Suspect/Suspect';
+import { LoginPage } from './components/general/LoginPage/LoginPage';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +11,10 @@ const App: React.FC = () => {
 
       <Navbar/>
       <Switch>
+
+        <Route path="/login">
+          <LoginPage/>
+        </Route>
 
         <Route path="/">
           <Homepage/>

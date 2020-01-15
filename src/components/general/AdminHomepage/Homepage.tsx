@@ -44,7 +44,7 @@ export function Homepage(){
                 <button className="indivButton">UPDATE LIST</button>
                 <Link className="indivButton" to="/new_suspect_profile">ADD NEW PROFILE</Link>
             </div>
-            
+
             <SuspectTrial/>
 
         </div>
