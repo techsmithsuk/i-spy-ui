@@ -19,6 +19,7 @@ export function Navbar() {
                     <div className="super-admin">
                         <Link to="/settings" className="nav-element">Admin Settings</Link>
                     </div>
+                  
                 </div>
                 <div className="logOut">
                     <div>
