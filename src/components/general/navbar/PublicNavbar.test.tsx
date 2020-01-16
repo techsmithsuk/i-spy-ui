@@ -1,18 +1,17 @@
 import React from 'react';
+import { PublicNavbar } from './PublicNavbar';
 import renderer from 'react-test-renderer';
 import { BrowserRouter} from "react-router-dom";
-import { ProfilePage } from './ProfilePage';
 
-describe("ProfilePage", () => {
-    it("Should render a Reporting A Sighting button that matches snapshot", () => {
+describe("Navbar", () => {
+    it("Should render without errors", () => {
         const component = renderer.create(
             <BrowserRouter>
-            <ProfilePage/>
+            <PublicNavbar/>
             </BrowserRouter>
         );
 
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
-
     });
 });

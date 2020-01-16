@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './ProfilePage.scss';
+import './PublicProfilePage.scss';
 
-export function ProfilePage() {
+export function PublicProfilePage() {
     return (
         <div className="profilePage">
         <div className="reportSightingButton">

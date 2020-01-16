@@ -1,23 +1,23 @@
 import React from 'react';
 import './App.css';
-import {Navbar} from './components/general/navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Homepage } from './components/general/AdminHomepage/Homepage';
-import { ProfilePage } from './components/User-side/ProfilePage/ProfilePage';
+import { PublicHomepage } from './components/User-side/Homepage/PublicHomepage'
+import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProfilePage';
+import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 
 const App: React.FC = () => {
   return (
     <Router>
 
-      <Navbar/>
+      <PublicNavbar/>
       <Switch>
 
         <Route path="/profile">
-          <ProfilePage/>
+          <PublicProfilePage/>
         </Route>
 
         <Route path="/">
-          <Homepage/>
+          <PublicHomepage/>
         </Route>
 
       </Switch>
