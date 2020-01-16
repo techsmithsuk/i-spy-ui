@@ -22,7 +22,7 @@ export function Homepage(){
     }, [url]);    
 
     if (error) { 
-        return <div>Oh No!!! There was an error</div> 
+        return <div>Oh no!!! There was an error</div> 
     }
 
     if (!suspectList){

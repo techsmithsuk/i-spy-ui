@@ -1,0 +1,31 @@
+@import '../../general/general-styling.scss';
+
+.profilePage {
+
+    .reportSightingButton {
+        text-align: center;
+
+        .indivButton {
+            @include indivButton;
+            width:80%;
+            font-size: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+
+            @media screen and (min-width: $tablet-breakpoint) {
+                width:70%;
+                font-size:30px;
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+
+            @media screen and (min-width: $desktop-breakpoint) {
+                width:60%;
+                font-size:35px;
+                padding-left: 200px;
+                padding-right: 200px;
+            }
+                
+        }
+    }
+}

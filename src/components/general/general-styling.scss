@@ -15,3 +15,21 @@ $body-text:'Montserrat', sans-serif;
 $button-text:'Montserrat', sans-serif;
 
 $standard-padding: 15px 0;
+
+$phone-breakpoint: 576px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 992px;
+$large-desktop-breakpoint: 1200px; 
+
+@mixin indivButton {
+    background-color: $button-color;
+    color: $white-color;
+    border: none;
+    text-decoration: none;
+    font-family: $button-text;
+    font-size: 40px;
+    text-align: center;
+    margin:10px;
+    padding: 5px 0;
+    width:500px;
+    }
