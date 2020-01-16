@@ -1,7 +1,7 @@
 import React from "react";
 import { render, wait } from "@testing-library/react"
 import {mockSuccessfulFetch, mockFailedFetch} from '../../general/helpers/fetchMocks';
-import { Homepage } from "./Homepage";
+import { AdminHomepage } from "./AdminHomepage";
 import { createBrowserHistory } from 'history';
 import { Router } from "react-router-dom";
 
@@ -13,7 +13,7 @@ describe('testing api', () => {
     })
 
     it("should render Fetching data... while waiting", () => {
-        const homepage = render(<Homepage/>);
+        const homepage = render(<AdminHomepage/>);
         expect(homepage.getByText("Fetching data...")).toBeInTheDocument();
     })
 
@@ -27,7 +27,7 @@ describe('testing api', () => {
 
         mockSuccessfulFetch(suspectList);
         const history = createBrowserHistory();
-        const homepage = render(<Router history={history}><Homepage/></Router>);
+        const homepage = render(<Router history={history}><AdminHomepage/></Router>);
         await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
         await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
         await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
@@ -37,7 +37,7 @@ describe('testing api', () => {
     it("should shows an error message if the api call fails", async () => {
         mockFailedFetch();
 
-        const homepage = render(<Homepage/>);
+        const homepage = render(<AdminHomepage/>);
         await wait(() => expect(homepage.getByText("Oh No!!! There was an error")).toBeInTheDocument());
     });
 });

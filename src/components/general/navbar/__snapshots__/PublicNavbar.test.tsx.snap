@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar Should render without errors 1`] = `
+<nav>
+  <div
+    className="main-nav-elements"
+  >
+    <div>
+      <a
+        className="nav-element"
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </div>
+  </div>
+  <div
+    className="login"
+  >
+    <div>
+      <a
+        className="nav-element"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+    </div>
+  </div>
+</nav>
+`;
