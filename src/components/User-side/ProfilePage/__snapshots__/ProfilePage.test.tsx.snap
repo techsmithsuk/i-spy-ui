@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfilePage Should render a Reporting A Sighting button that matches snapshot 1`] = `
+<div
+  className="profilePage"
+>
+  <div
+    className="reportSightingButton"
+  >
+    <a
+      className="indivButton"
+      href="/profile/createReport"
+      onClick={[Function]}
+    >
+      REPORT A SIGHTING
+    </a>
+  </div>
+</div>
+`;
