@@ -1,4 +1,4 @@
-@import '../general-styling.scss';
+@import '../../general/general-styling.scss';
 
 .homepage{
 
@@ -22,21 +22,12 @@
         justify-content: center;
     }
 
-    .buttons{
+    .buttons {
         display: flex;
         align-items: center;
         flex-direction: column;
         .indivButton{
-            background-color: $button-color;
-            color: $white-color;
-            border: none;
-            text-decoration: none;
-            font-family: $button-text;
-            font-size: 40px;
-            text-align: center;
-            margin:10px;
-            padding: 5px 0;
-            width:500px;
+            @include indivButton;
         }
     }
 }

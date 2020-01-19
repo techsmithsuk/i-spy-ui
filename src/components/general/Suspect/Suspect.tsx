@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import asyncJSONFetch from '../general/helpers/asyncJSONFetcher';
+import {asyncJSONFetch} from '../helpers/asyncJSONFetcher';
 
 
 interface SuspectTrialInfo {

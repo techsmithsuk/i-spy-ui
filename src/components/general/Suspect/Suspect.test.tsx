@@ -1,7 +1,7 @@
 import React from "react";
 import { render, wait } from "@testing-library/react"
 import Suspect from './Suspect';
-import {mockSuccessfulFetch, mockFailedFetch} from '../general/helpers/fetchMocks';
+import {mockSuccessfulFetch, mockFailedFetch} from '../helpers/fetchMocks';
 
 describe('testing api', () => {
 

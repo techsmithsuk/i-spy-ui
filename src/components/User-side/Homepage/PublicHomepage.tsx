@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import {SuspectCard} from '../SuspectCard';
-import { Link } from "react-router-dom";
-import './homepage.scss';
-import asyncJSONFetch from '../helpers/asyncJSONFetcher';
-import { Suspect } from '../helpers/SuspectInterfaces';
-import SuspectTrial from '../../Suspect/Suspect';
+import React, { useState, useEffect, useContext } from 'react';
+import { SuspectCard } from '../../general/SuspectCard';
+import './PublicHomepage.scss';
+import {asyncJSONFetch} from '../../general/helpers/asyncJSONFetcher';
+import { Suspect } from '../../general/helpers/SuspectInterfaces';
+import SuspectTrial from '../../general/Suspect/Suspect';
 
 
-export function Homepage(){
+export function PublicHomepage(){
     
     const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
@@ -39,12 +38,6 @@ export function Homepage(){
             <ol className="suspectCardList"> 
                 {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
             </ol>
-
-            <div className="buttons">
-                <button className="indivButton">UPDATE LIST</button>
-                <Link className="indivButton" to="/new_suspect_profile">ADD NEW PROFILE</Link>
-            </div>
-
             <SuspectTrial/>
 
         </div>

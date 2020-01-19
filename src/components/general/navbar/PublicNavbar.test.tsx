@@ -1,14 +1,13 @@
 import React from 'react';
-import { Navbar } from './Navbar';
+import { PublicNavbar } from './PublicNavbar';
 import renderer from 'react-test-renderer';
 import { BrowserRouter} from "react-router-dom";
-import ReactDOM from 'react-dom';
 
 describe("Navbar", () => {
     it("Should render without errors", () => {
         const component = renderer.create(
             <BrowserRouter>
-            <Navbar/>
+            <PublicNavbar/>
             </BrowserRouter>
         );
 

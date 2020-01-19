@@ -1,28 +1,38 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './App.css';
-import {Navbar} from './components/general/navbar/Navbar';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Homepage } from './components/general/AdminHomepage/Homepage';
-import { LoginPage } from './components/general/LoginPage/LoginPage';
+import { PublicHomepage } from './components/User-side/Homepage/PublicHomepage'
+import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProfilePage';
+import { PublicNavbar } from './components/general/navbar/PublicNavbar';
+import { LoginPage } from './components/LoginPage/LoginPage';
+import { AuthContext, AuthContextProvider } from './components/AuthContext';
 
 const App: React.FC = () => {
+  const state = useContext(AuthContext);
+  
   return (
-    <Router>
+    <AuthContextProvider>
+      <Router>
 
-      <Navbar/>
-      <Switch>
+        <PublicNavbar/>
+        <Switch>
 
-        <Route path="/login">
-          <LoginPage/>
-        </Route>
+          <Route path="/login">
+            <LoginPage/>
+          </Route>
 
-        <Route path="/">
-          <Homepage/>
-        </Route>
+          <Route path="/profile">
+            <PublicProfilePage/>
+          </Route>
 
-      </Switch>
-      
-    </Router>
+          <Route path="/">
+            <PublicHomepage/>
+          </Route>
+
+        </Switch>
+        
+      </Router>
+      </AuthContextProvider>
   );
 }
 export default App;

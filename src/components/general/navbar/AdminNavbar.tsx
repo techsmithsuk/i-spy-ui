@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import './navbar.scss';
+import './AdminNavbar.scss'
 
-export function Navbar() {
+export function AdminNavbar() {
     return (
 
             <nav>
@@ -19,6 +19,7 @@ export function Navbar() {
                     <div className="super-admin">
                         <Link to="/settings" className="nav-element">Admin Settings</Link>
                     </div>
+                  
                 </div>
                 <div className="logOut">
                     <div>
