@@ -34,7 +34,7 @@ const App: React.FC = () => {
         </Switch>
         
       </Router>
-      </AuthContextProvider>
+    </AuthContextProvider>
   );
 }
 export default App;

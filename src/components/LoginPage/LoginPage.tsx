@@ -5,7 +5,7 @@ import { asyncJSONPostFetch } from '../general/helpers/asyncJSONFetcher';
 
 export function LoginPage(){
     const context = useContext(AuthContext);
-    const [fetchSuccess,setFetchSuccess] = useState<boolean>();
+    const [error,setError] = useState<boolean>(false);
     const [username,setUsername] = useState<string>("");
     const [password,setPassword] = useState<string>("");
 
@@ -19,22 +19,22 @@ export function LoginPage(){
         try{
             const jsonResponse = await asyncJSONPostFetch(`${process.env.REACT_APP_API_URL}/login`,formData)
             const token :string = jsonResponse.token;
-
-            context.setToken(token);
-            setFetchSuccess(true);
             
-        
+            context.setToken(token);
+            context.setLoggedIn(true);
+            
         } catch (error){
-            setFetchSuccess(false)
+            setError(true)
+            context.setLoggedIn(false);
             console.log('Error',error);
         }
     }
     
-    if(fetchSuccess === true){
+    if(context.loggedIn){
         return (<Redirect to ="/"/>)
     } 
     
-    else if(fetchSuccess === false){
+    else if(error){
         return (
             <div>
                 <Login></Login>
@@ -43,7 +43,6 @@ export function LoginPage(){
         )
     }
 
-    console.log("rendering it the first time.")
     return (
         <Login/>
     )
