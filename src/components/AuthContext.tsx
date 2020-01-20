@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 
-export const AuthContext = React.createContext({
-    loggedIn: false,
-    setLoggedIn: (authState :boolean) => {},
-    token: "" ,
-    setToken: (token :string) => {}
-});
+export const AuthContext = React.createContext({loggedIn: false,setLoggedIn: (authState :boolean) => {},token: "" ,setToken: (token :string) => {}});
 
 export const AuthContextProvider = (props :any) => {
 

@@ -5,6 +5,7 @@ import { asyncJSONPostFetch } from '../general/helpers/asyncJSONFetcher';
 
 export function LoginPage(){
     const context = useContext(AuthContext);
+    
     const [error,setError] = useState<boolean>(false);
     const [username,setUsername] = useState<string>("");
     const [password,setPassword] = useState<string>("");
@@ -22,7 +23,7 @@ export function LoginPage(){
             
             context.setToken(token);
             context.setLoggedIn(true);
-            
+
         } catch (error){
             setError(true)
             context.setLoggedIn(false);
