@@ -3,7 +3,6 @@ import { SuspectCard } from '../../general/SuspectCard';
 import './PublicHomepage.scss';
 import asyncJSONFetch from '../../general/helpers/asyncJSONFetcher';
 import { Suspect } from '../../general/helpers/SuspectInterfaces';
-import SuspectTrial from '../../general/Suspect/Suspect';
 
 
 export function PublicHomepage(){

@@ -5,7 +5,7 @@ import { PublicHomepage } from './components/User-side/Homepage/PublicHomepage'
 import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProfilePage';
 import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 import { AdminHomepage } from './components/Admin-side/Homepage/AdminHomepage';
-import { ViewAllReports } from './components/general/Report/ViewAllReports';
+import { ViewAllReports } from './components/Admin-side/ViewAllReports/ViewAllReports';
 
 const App: React.FC = () => {
   return (

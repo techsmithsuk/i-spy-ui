@@ -4,4 +4,6 @@ export interface Report {
     dateOfSighting?: string;
     location?: string
     description: string;
+    timestampSubmitted: string;
 }
+
