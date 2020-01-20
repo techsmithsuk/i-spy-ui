@@ -19,11 +19,11 @@ const App: React.FC = () => {
         </Route>
 
         <Route path="/reports">
-          <ViewAllReports/>
+          {/* <ViewAllReports/> */}
         </Route>
 
         <Route path="/admin">
-          <AdminHomepage/>
+          {/* <AdminHomepage/> */}
         </Route>
         
         <Route path="/">
