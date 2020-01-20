@@ -1,0 +1,24 @@
+@import '../../general/general-styling.scss';
+
+p {
+    @include p;
+}
+
+.reportCardMain {
+    border-style: solid;
+    width: 75%;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+.profileButtonAlignment {
+    text-align: right;
+    text-align: top;
+    margin: 0 20px 20px 0;
+
+    .goToProfileButton {
+        @include smallBlueButton;
+    }
+    
+}
+

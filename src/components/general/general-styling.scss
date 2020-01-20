@@ -33,3 +33,29 @@ $large-desktop-breakpoint: 1200px;
     padding: 5px 0;
     width:500px;
     }
+
+@mixin smallBlueButton {
+    color: $white-color;
+        font-family: $button-text;
+        font-size: 35px;
+        padding: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        text-decoration: none;
+        border-style: solid;
+        border-color: $blue-color;
+        border-radius: 10px;
+        background-color: $blue-color;
+}
+
+@mixin h1 {
+    font-family: $header-text;
+    font-size: 60px;
+    text-align: center;
+    color:$blue-color
+    }
+
+@mixin p {
+    font-family: $body-text;
+    font-size: 20px;
+}

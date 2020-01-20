@@ -7,7 +7,7 @@ import { Suspect } from '../../general/helpers/SuspectInterfaces';
 import SuspectTrial from '../../general/Suspect/Suspect';
 
 
-export function AdminHomepage(){
+export function AdminHomepage() {
     
     const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
@@ -37,15 +37,14 @@ export function AdminHomepage(){
             <h1>FBI Most Wanted</h1>
 
             <ol className="suspectCardList"> 
-                {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
+                {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard">
+                    <SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
             </ol>
 
             <div className="buttons">
                 <button className="indivButton">UPDATE LIST</button>
                 <Link className="indivButton" to="/new_suspect_profile">ADD NEW PROFILE</Link>
             </div>
-            
-            <SuspectTrial/>
 
         </div>
     )
