@@ -6,6 +6,8 @@ import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProf
 import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { AuthContext, AuthContextProvider } from './components/AuthContext';
+import { AdminHomepage } from './components/Admin-side/Homepage/AdminHomepage';
+import { ViewAllReports } from './components/Admin-side/ViewAllReports/ViewAllReports';
 
 const App: React.FC = () => {
   const context = useContext(AuthContext);
@@ -23,6 +25,12 @@ const App: React.FC = () => {
 
           <Route exact path="/profile">
             <PublicProfilePage/>
+          </Route>
+        
+          <Route exact path="/reports">
+          </Route>
+
+          <Route exact path="/admin">
           </Route>
 
           <Route exact path="/">
