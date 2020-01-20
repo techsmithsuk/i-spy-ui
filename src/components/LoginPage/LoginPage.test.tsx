@@ -53,7 +53,6 @@ describe('login page', () => {
         await wait(() =>expect(loginPage.getByText("Username")).toBeInTheDocument());
         await wait(() =>expect(loginPage.getByText("Password")).toBeInTheDocument());
         await wait(() =>expect(loginPage.getByTestId("LoginForm")).toBeInTheDocument());
-        await wait(() => expect(loginPage.getByText("Invalid Username and Password Combination")).toBeInTheDocument());
     });
 
     it("redirect on successfull login", async () => {
