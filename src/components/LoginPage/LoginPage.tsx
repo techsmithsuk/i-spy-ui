@@ -38,19 +38,7 @@ export function LoginPage(){
     else if(error){
         return (
             <div>
-                <Login></Login>
-                <h3>Invalid Username and Password Combination</h3>
-            </div>
-        )
-    }
-
-    return (
-        <Login/>
-    )
-
-    function Login(){
-        return (
-            <section>
+                       <section>
                 <h1>Login</h1>
                 <form method = "post" data-testid="LoginForm" onSubmit = {handleSubmitLogin}>
 
@@ -68,7 +56,30 @@ export function LoginPage(){
 
                 </form>
             </section>
+                <h3>Invalid Username and Password Combination</h3>
+            </div>
         )
     }
+
+    return (
+        <section>
+        <h1>Login</h1>
+        <form method = "post" data-testid="LoginForm" onSubmit = {handleSubmitLogin}>
+
+            <label>
+                Username
+                <input type = "text" data-testid="Username" value = {username} onChange = {event => setUsername(event.target.value)}/>
+            </label>
+
+            <label>
+                Password
+                <input type = "text" data-testid="Password" value = {password} onChange = {event => setPassword(event.target.value)}/>
+            </label>
+
+            <input type = "submit" value = "Login" data-testid="SubmitButton"/>
+
+        </form>
+    </section>
+    )
 }
 

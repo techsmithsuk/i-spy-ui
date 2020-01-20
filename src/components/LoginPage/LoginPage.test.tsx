@@ -2,7 +2,7 @@ import React from "react";
 import { render, wait, fireEvent } from "@testing-library/react";
 import {mockSuccessfulFetch, mockFailedFetch} from '../general/helpers/fetchMocks';
 import { LoginPage } from "./LoginPage";
-import { AuthContext, AuthContextProvider } from "../AuthContext";
+import { AuthContextProvider } from "../AuthContext";
 
 describe('login page', () => {
 

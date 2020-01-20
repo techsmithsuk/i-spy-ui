@@ -6,8 +6,6 @@ import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProf
 import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { AuthContext, AuthContextProvider } from './components/AuthContext';
-import { AdminHomepage } from './components/Admin-side/Homepage/AdminHomepage';
-import { isContext } from 'vm';
 
 const App: React.FC = () => {
   const context = useContext(AuthContext);
