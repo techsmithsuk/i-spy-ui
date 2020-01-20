@@ -19,11 +19,9 @@ const App: React.FC = () => {
         </Route>
 
         <Route path="/reports">
-          {/* <ViewAllReports/> */}
         </Route>
 
         <Route path="/admin">
-          {/* <AdminHomepage/> */}
         </Route>
         
         <Route path="/">
