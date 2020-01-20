@@ -6,19 +6,19 @@ import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProf
 import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { AuthContext, AuthContextProvider } from './components/AuthContext';
-import { AdminHomepage } from './components/Admin-side/Homepage/AdminHomepage';
-import { ViewAllReports } from './components/Admin-side/ViewAllReports/ViewAllReports';
-
 const App: React.FC = () => {
   const context = useContext(AuthContext);
-  
   return (
     <AuthContextProvider>
       <Router>
 
         <PublicNavbar/>
         <Switch>
-
+          
+          <Route exact path="/">
+            <PublicHomepage/>
+          </Route>
+          
           <Route exact path="/login">
             <LoginPage/>
           </Route>
@@ -33,9 +33,7 @@ const App: React.FC = () => {
           <Route exact path="/admin">
           </Route>
 
-          <Route exact path="/">
-            <PublicHomepage/>
-          </Route>
+          
           
         </Switch>
         
