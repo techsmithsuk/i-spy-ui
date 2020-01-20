@@ -44,8 +44,6 @@ export function AdminHomepage(){
                 <Link className="indivButton" to="/new_suspect_profile">ADD NEW PROFILE</Link>
             </div>
 
-            <SuspectTrial/>
-
         </div>
     )
 }

@@ -3,17 +3,17 @@ import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 
 export function LoginPage(){
-    const state = useContext(AuthContext);
+    const context = useContext(AuthContext);
     const [fetchSuccess,setFetchSuccess] = useState<boolean>();
-    const [username,setUsername] = useState<string>("c@rnati0nZen");
-    const [password,setPassword] = useState<string>("c'U(z:NCshz#9c8X");
+    const [username,setUsername] = useState<string>("");
+    const [password,setPassword] = useState<string>("");
 
     async function handleSubmitLogin(event :React.FormEvent<HTMLFormElement>){
         event.preventDefault();
 
         const formData = new FormData();
         formData.append('username', username);
-        formData.append('password',password);
+        formData.append('password', password);
 
         try{
             const response = await fetch(`${process.env.REACT_APP_API_URL}/login`,{
@@ -24,7 +24,7 @@ export function LoginPage(){
             const token :string = jsonResponse.token;
 
             setFetchSuccess(true);
-            state.setToken(token);
+            context.setToken(token);
         
         } catch (error){
 
@@ -41,7 +41,7 @@ export function LoginPage(){
         return (
             <div>
                 <Login></Login>
-                <h3>Oh No!!! There was an error</h3>
+                <h3>Invalid Username and Password Combination</h3>
             </div>
         )
     }
@@ -54,13 +54,20 @@ export function LoginPage(){
         return (
             <div>
                 <h1>Login</h1>
-                <h1>{state.token}</h1>
-                <form method = "post" onSubmit = {handleSubmitLogin}>
-    
-                    <input type = "text" value = {username} onChange = {event => setUsername(event.target.value)}/>
-                    <input type = "text" value = {password} onChange = {event => setPassword(event.target.value)}/>
-                    <input type = "submit" value = "Login"/>
-    
+                <form method = "post" data-testid = "LoginForm" onSubmit = {handleSubmitLogin}>
+
+                    <label>
+                        Username
+                        <input type = "text" name = "username" value = {username} onChange = {event => setUsername(event.target.value)}/>
+                    </label>
+
+                    <label>
+                        Password
+                        <input type = "text" name = "password" value = {password} onChange = {event => setPassword(event.target.value)}/>
+                    </label>
+
+                        <input type = "submit" value = "Login"/>
+
                 </form>
     
             </div>

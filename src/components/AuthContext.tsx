@@ -4,10 +4,11 @@ export const AuthContext = React.createContext({
     token: "" ,
     setToken: (token :string) => {}
 });
+
 export const AuthContextProvider = (props :any) => {
 
-    const setToken = (token :string) => {
-      setState({...state, token: token})
+    const setToken = (newToken :string) => {
+      setState({...state, token: newToken})
     }
   
     const initState = {

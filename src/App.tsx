@@ -6,9 +6,11 @@ import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProf
 import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { AuthContext, AuthContextProvider } from './components/AuthContext';
+import { AdminHomepage } from './components/Admin-side/Homepage/AdminHomepage';
+import { isContext } from 'vm';
 
 const App: React.FC = () => {
-  const state = useContext(AuthContext);
+  const context = useContext(AuthContext);
   
   return (
     <AuthContextProvider>
@@ -17,18 +19,18 @@ const App: React.FC = () => {
         <PublicNavbar/>
         <Switch>
 
-          <Route path="/login">
+          <Route exact path="/login">
             <LoginPage/>
           </Route>
 
-          <Route path="/profile">
+          <Route exact path="/profile">
             <PublicProfilePage/>
           </Route>
 
-          <Route path="/">
+          <Route exact path="/">
             <PublicHomepage/>
           </Route>
-
+          
         </Switch>
         
       </Router>
@@ -36,3 +38,4 @@ const App: React.FC = () => {
   );
 }
 export default App;
+
