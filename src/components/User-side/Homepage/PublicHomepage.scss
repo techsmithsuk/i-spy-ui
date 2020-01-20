@@ -1,13 +1,10 @@
 @import '../../general/general-styling.scss';
 
-.homepage{
+h1 {
+    @include h1;
+}
 
-    h1{
-        font-family: $header-text;
-        font-size: 60px;
-        text-align: center;
-        color:$blue-color
-    }
+.homepage{
 
     .suspectCardList {
         display: flex;

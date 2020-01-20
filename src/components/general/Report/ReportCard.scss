@@ -1,0 +1,9 @@
+@import '../../general/general-styling.scss';
+
+p {
+    @include p;
+}
+
+.reportCardMain {
+    border-style: solid;
+}

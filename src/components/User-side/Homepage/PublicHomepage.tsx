@@ -11,7 +11,8 @@ export function PublicHomepage(){
     const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
     let pageNumber :number = 1;
-    const url: string = `${process.env.REACT_APP_API_URL}/suspects?page=${pageNumber}`
+    const url: string = `${process.env.REACT_APP_API_URL}/suspects`
+
     
     
     useEffect(() => { 
@@ -36,9 +37,9 @@ export function PublicHomepage(){
             <h1>FBI Most Wanted</h1>
 
             <ol className="suspectCardList"> 
-                {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
+                {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard">
+                    <SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
             </ol>
-            <SuspectTrial/>
 
         </div>
     )
