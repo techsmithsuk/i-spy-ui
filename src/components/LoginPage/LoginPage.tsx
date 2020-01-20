@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
+import { asyncJSONPostFetch } from '../general/helpers/asyncJSONFetcher';
 
 export function LoginPage(){
     const context = useContext(AuthContext);
@@ -16,25 +17,21 @@ export function LoginPage(){
         formData.append('password', password);
 
         try{
-            const response = await fetch(`${process.env.REACT_APP_API_URL}/login`,{
-                method:'POST',
-                body: formData
-            });
-            const jsonResponse :any= await response.json();
+            const jsonResponse = await asyncJSONPostFetch(`${process.env.REACT_APP_API_URL}/login`,formData)
             const token :string = jsonResponse.token;
 
-            setFetchSuccess(true);
             context.setToken(token);
+            setFetchSuccess(true);
+            
         
         } catch (error){
-
             setFetchSuccess(false)
             console.log('Error',error);
         }
     }
     
     if(fetchSuccess === true){
-        return (<Redirect to ="/"></Redirect>)
+        return (<Redirect to ="/"/>)
     } 
     
     else if(fetchSuccess === false){
@@ -46,31 +43,31 @@ export function LoginPage(){
         )
     }
 
+    console.log("rendering it the first time.")
     return (
-        <Login></Login>
+        <Login/>
     )
 
     function Login(){
         return (
-            <div>
+            <section>
                 <h1>Login</h1>
-                <form method = "post" data-testid = "LoginForm" onSubmit = {handleSubmitLogin}>
+                <form method = "post" data-testid="LoginForm" onSubmit = {handleSubmitLogin}>
 
                     <label>
                         Username
-                        <input type = "text" name = "username" value = {username} onChange = {event => setUsername(event.target.value)}/>
+                        <input type = "text" data-testid="Username" value = {username} onChange = {event => setUsername(event.target.value)}/>
                     </label>
 
                     <label>
                         Password
-                        <input type = "text" name = "password" value = {password} onChange = {event => setPassword(event.target.value)}/>
+                        <input type = "text" data-testid="Password" value = {password} onChange = {event => setPassword(event.target.value)}/>
                     </label>
 
-                        <input type = "submit" value = "Login"/>
+                    <input type = "submit" value = "Login" data-testid="SubmitButton"/>
 
                 </form>
-    
-            </div>
+            </section>
         )
     }
 }
