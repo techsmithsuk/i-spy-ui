@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from '../AuthContext';
 import { asyncJSONPostFetch } from '../general/helpers/asyncJSONFetcher';
+import './LoginPage.scss';
 
 export function LoginPage(){
     const context = useContext(AuthContext);
@@ -45,22 +46,16 @@ export function LoginPage(){
     }
 
     return (
-        <section>
+        <section className="loginPage">
             <h1>Login</h1>
-            <form method = "post" data-testid="LoginForm" onSubmit = {handleSubmitLogin}>
-
-                <label>
-                    Username
-                    <input type = "text" data-testid="Username" value = {username} onChange = {event => setUsername(event.target.value)}/>
-                </label>
-
-                <label>
-                    Password
-                    <input type = "text" data-testid="Password" value = {password} onChange = {event => setPassword(event.target.value)}/>
-                </label>
-
-                <input type = "submit" value = "Login" data-testid="SubmitButton"/>
-
+            <form method="post" data-testid="LoginForm" onSubmit={handleSubmitLogin}>
+                <label>Username</label>    
+                    <input type="text" data-testid="Username" value={username} onChange={event => setUsername(event.target.value)}/>
+                
+                <label>Password </label>  
+                    <input type="password" data-testid="Password" value={password} onChange={event => setPassword(event.target.value)}/>
+                
+                <input className="submit" type="submit" value="Login" data-testid="SubmitButton"/>
             </form>
         </section>
     )
