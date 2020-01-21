@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import {SuspectCard} from '../../general/SuspectCard';
 import { Link } from "react-router-dom";
 import './AdminHomepage.scss';
-import asyncJSONFetch from '../../general/helpers/asyncJSONFetcher';
+import {asyncJSONFetch} from '../../general/helpers/asyncJSONFetcher';
 import { Suspect } from '../../general/helpers/SuspectInterfaces';
 import SuspectTrial from '../../general/Suspect/Suspect';
-
 
 export function AdminHomepage() {
     

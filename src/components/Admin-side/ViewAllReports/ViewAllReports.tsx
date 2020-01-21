@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import asyncJSONFetch from '../../general/helpers/asyncJSONFetcher';
+import { asyncJSONFetch } from '../../general/helpers/asyncJSONFetcher';
 import { Report } from '../../general/helpers/ReportInterface';
 import { ReportCard } from '../../general/Report/ReportCard';
 import '../ViewAllReports/ViewAllReports.scss';

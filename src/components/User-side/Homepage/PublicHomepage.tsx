@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { SuspectCard } from '../../general/SuspectCard';
 import './PublicHomepage.scss';
-import asyncJSONFetch from '../../general/helpers/asyncJSONFetcher';
+import {asyncJSONFetch} from '../../general/helpers/asyncJSONFetcher';
 import { Suspect } from '../../general/helpers/SuspectInterfaces';
-
+import { AuthContext } from '../../AuthContext';
 
 export function PublicHomepage(){
     
+    const context = useContext(AuthContext);
+    console.log(context.token)
     const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
     let pageNumber :number = 1;
