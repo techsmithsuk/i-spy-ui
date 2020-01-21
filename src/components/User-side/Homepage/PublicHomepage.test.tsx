@@ -3,7 +3,7 @@ import { render, wait } from "@testing-library/react"
 import {mockSuccessfulFetch, mockFailedFetch} from '../../general/helpers/fetchMocks';
 import { PublicHomepage } from "./PublicHomepage";
 import { createBrowserHistory } from 'history';
-import { Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe('testing api', () => {
 
@@ -27,7 +27,7 @@ describe('testing api', () => {
 
         mockSuccessfulFetch(suspectList);
         const history = createBrowserHistory();
-        const homepage = render(<Router history={history}><PublicHomepage/></Router>);
+        const homepage = render(<Router><PublicHomepage/></Router>);
         await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
         await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
         await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));

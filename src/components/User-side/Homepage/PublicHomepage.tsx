@@ -3,7 +3,10 @@ import { SuspectCard } from '../../general/SuspectCard';
 import './PublicHomepage.scss';
 import {asyncJSONFetch} from '../../general/helpers/asyncJSONFetcher';
 import { Suspect } from '../../general/helpers/SuspectInterfaces';
+import SuspectTrial from '../../general/Suspect/Suspect';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../AuthContext';
+
 
 export function PublicHomepage(){
     
@@ -38,10 +41,8 @@ export function PublicHomepage(){
             <h1>FBI Most Wanted</h1>
 
             <ol className="suspectCardList"> 
-                {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard">
-                    <SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
+                {suspectList.map(suspect => <Link to={`/profile/${suspect.id}`} className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></Link>)}
             </ol>
-
         </div>
     )
 }

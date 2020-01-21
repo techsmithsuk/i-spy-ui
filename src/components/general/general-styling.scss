@@ -34,6 +34,7 @@ $large-desktop-breakpoint: 1200px;
     width:500px;
     }
 
+
 @mixin smallBlueButton {
     color: $white-color;
         font-family: $button-text;
@@ -53,6 +54,7 @@ $large-desktop-breakpoint: 1200px;
     font-size: 60px;
     text-align: center;
     color:$blue-color
+
     }
 
 @mixin p {
