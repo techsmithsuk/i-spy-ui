@@ -33,3 +33,10 @@ $large-desktop-breakpoint: 1200px;
     padding: 5px 0;
     width:500px;
     }
+    
+@mixin h1 {
+    font-family: $header-text;
+    font-size: 60px;
+    text-align: center;
+    color:$blue-color
+}

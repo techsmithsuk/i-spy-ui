@@ -3,10 +3,7 @@
 .homepage{
 
     h1{
-        font-family: $header-text;
-        font-size: 60px;
-        text-align: center;
-        color:$blue-color
+        @include h1; 
     }
 
     .suspectCardList {
@@ -20,6 +17,8 @@
         flex-basis: 20%;
         display: flex;
         justify-content: center;
+        text-decoration: none;
+        color: $black-color;
     }
 
     .buttons {

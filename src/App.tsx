@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <PublicNavbar/>
       <Switch>
 
-        <Route path="/profile">
+        <Route path="/profile/:id">
           <PublicProfilePage/>
         </Route>
 

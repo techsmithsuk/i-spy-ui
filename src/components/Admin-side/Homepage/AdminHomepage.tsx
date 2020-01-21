@@ -12,8 +12,8 @@ export function AdminHomepage(){
     const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
     let pageNumber :number = 1;
-    const url: string = `${process.env.REACT_APP_API_URL}/suspects?page=${pageNumber}`
-    
+    // const url: string = `${process.env.REACT_APP_API_URL}/suspects?page=${pageNumber}`
+    const url: string = "http://localhost:8080/suspects?page=${pageNumber}"
     
     useEffect(() => { 
         asyncJSONFetch(url)            
