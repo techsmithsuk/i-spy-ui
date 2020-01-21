@@ -22,11 +22,11 @@ const App: React.FC = () => {
           <Route exact path="/login">
             <LoginPage/>
           </Route>
-
-          <Route exact path="/profile">
-            <PublicProfilePage/>
-          </Route>
-        
+          
+        <Route path="/profile/:id">
+          <PublicProfilePage/>
+        </Route>
+             
           <Route exact path="/reports">
           </Route>
 
