@@ -1,7 +1,7 @@
 import React from 'react';
 import './suspectCard.scss';
 
-interface SuspectCardProps{
+export interface SuspectCardProps{
     name :string;
     image :string;
 }
@@ -9,7 +9,7 @@ interface SuspectCardProps{
 export function SuspectCard(props :SuspectCardProps) {
     return (
     <div className="suspectCard">
-        <img src={props.image} alt="Image of Suspect"/>
+        <img src={props.image} alt="Suspect"/>
         {props.name}
     </div>
     )
