@@ -4,8 +4,6 @@ import renderer from 'react-test-renderer';
 import { MemoryRouter as Router } from "react-router-dom";
 import { render, fireEvent, wait } from "@testing-library/react"
 import { AuthContextProvider } from '../../AuthContext';
-import { PublicHomepage } from '../../User-side/Homepage/PublicHomepage';
-import { createBrowserHistory } from 'history';
 
 describe("Navbar", () => {
     it("Should render without errors", () => {
@@ -50,5 +48,4 @@ it("should show no other options when logged out", async () => {
     await wait(() => expect(component.queryByText("Manage Users")).toBeNull());
     await wait(() => expect(component.queryByText("Admin Settings")).toBeNull());
     await wait(() => expect(component.queryByText("Home")).toBeInTheDocument());
-
 });
