@@ -9,7 +9,6 @@ import { AuthContext } from '../../AuthContext';
 export function PublicHomepage(){
     
     const context = useContext(AuthContext);
-    console.log(context.loggedIn);
     const [suspectList, setSuspectList] = useState<Suspect[] | null>(null);
     const [error, setError] = useState(false);
     let pageNumber :number = 1;

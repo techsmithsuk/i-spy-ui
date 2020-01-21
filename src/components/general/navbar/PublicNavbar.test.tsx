@@ -41,7 +41,6 @@ it("should show no other options when logged out", async () => {
     )
     
     const logOutButton = component.getByText("Log Out");
-    console.log('log out button');
     fireEvent.click(logOutButton);
 
     await wait(() => expect(component.queryByText("Reports")).toBeNull());
