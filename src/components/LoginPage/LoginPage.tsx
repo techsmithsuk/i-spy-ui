@@ -22,11 +22,10 @@ export function LoginPage(){
             const token :string = jsonResponse.token;
             
             context.setToken(token);
-            context.setLoggedIn(true);
 
         } catch (error){
             setError(true)
-            context.setLoggedIn(false);
+            context.setToken("");
             console.log('Error',error);
         }
     }

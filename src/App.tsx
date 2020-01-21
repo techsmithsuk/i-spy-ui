@@ -30,9 +30,6 @@ const App: React.FC = () => {
           <Route exact path="/reports">
           </Route>
 
-          <Route exact path="/admin">
-          </Route>
-
           
           
         </Switch>
