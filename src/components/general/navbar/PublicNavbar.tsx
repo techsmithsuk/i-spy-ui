@@ -15,16 +15,16 @@ export function PublicNavbar() {
             <nav>
                 <div className="main-nav-elements">
                     <div>
-                        <Link to="/" className="nav-element">Home</Link>
+                        <Link to="/admin" className="nav-element">Home</Link>
                     </div>
                     <div>
-                        <Link to="/reports" className="nav-element">Reports</Link>
+                        <Link to="/admin/reports" className="nav-element">Reports</Link>
                     </div>
                     <div className="super-admin">
                         <Link to="/users" className="nav-element">Manage Users</Link>
                     </div>
                     <div className="super-admin">
-                        <Link to="/settings" className="nav-element">Admin Settings</Link>
+                        <Link to="/admin/settings" className="nav-element">Admin Settings</Link>
                     </div>
                 </div>
                 <div className="logOut" >

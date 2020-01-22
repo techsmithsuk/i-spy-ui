@@ -8,8 +8,8 @@ export function LoginPage(){
     const context = useContext(AuthContext);
     
     const [error,setError] = useState<boolean>(false);
-    const [username,setUsername] = useState<string>("");
-    const [password,setPassword] = useState<string>("");
+    const [username,setUsername] = useState<string>("c@rnati0nZen");
+    const [password,setPassword] = useState<string>("c'U(z:NCshz#9c8X");
 
     async function handleSubmitLogin(event :React.FormEvent<HTMLFormElement>){
         event.preventDefault();
@@ -32,7 +32,7 @@ export function LoginPage(){
     }
     
     if(context.loggedIn){
-        return (<Redirect to ="/"/>)
+        return (<Redirect to ="/admin"/>)
     } 
     
     else if(error){

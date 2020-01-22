@@ -1,10 +1,9 @@
-import React, { useContext } from "react";
-import { render, wait } from "@testing-library/react"
-import {mockSuccessfulFetch, mockFailedFetch} from '../../general/helpers/fetchMocks';
+import React from "react";
+import { render, wait, fireEvent } from "@testing-library/react"
+import { mockSuccessfulFetch, mockFailedFetch } from '../../general/helpers/fetchMocks';
 import { PublicHomepage } from "./PublicHomepage";
-import { createBrowserHistory } from 'history';
 import { MemoryRouter as Router } from "react-router-dom";
-import { AuthContextProvider, AuthContext } from "../../AuthContext";
+import { AuthContextProvider} from "../../AuthContext";
 
 describe('testing api', () => {
 
@@ -29,8 +28,8 @@ describe('testing api', () => {
         mockSuccessfulFetch(suspectList);
     
         const homepage = render(<Router><PublicHomepage/></Router>);
-        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
-        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
+        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument());
+        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument());
         await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
     });
 
@@ -58,10 +57,38 @@ describe('testing api', () => {
             </Router>
         </AuthContextProvider>);
 
-        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
-        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
+        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument());
+        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument());
         await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
-        await wait(() => expect(homepage.getByText("UPDATE LIST")).toBeInTheDocument);
-        await wait(() => expect(homepage.getByText("ADD NEW PROFILE")).toBeInTheDocument);
+        await wait(() => expect(homepage.getByText("UPDATE LIST")).toBeInTheDocument());
+        await wait(() => expect(homepage.getByText("ADD NEW PROFILE")).toBeInTheDocument());
+    });
+
+    it("should show Update List when logged in and Update List button is clicked", async () => {
+              
+        let suspectList :any[] = new Array();
+
+        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+
+        let successfulUpdate :any =({"Success":"No data has been added. Database Up to date."})
+
+        mockSuccessfulFetch(suspectList);
+        mockSuccessfulAdminFetch(successfulUpdate);
+
+        const homepage = render(
+        <AuthContextProvider initialLoggedIn={true}>
+            <Router>
+                <PublicHomepage/>
+            </Router>
+        </AuthContextProvider>);
+
+        fireEvent.click(homepage.getByText("UPDATE LIST"))
+
+        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument());
+        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument());
+        await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
+        await wait(() => expect(homepage.getByText("UPDATE LIST")).toBeInTheDocument());
+        await wait(() => expect(homepage.getByText("ADD NEW PROFILE")).toBeInTheDocument());
     });
 });
