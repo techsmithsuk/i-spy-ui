@@ -1,3 +1,9 @@
+// export interface Suspect {
+//     id: number;
+//     name: string;
+//     imageUrl:string;
+// }
+
 export interface Suspect {
     id : number,
     title: string,
