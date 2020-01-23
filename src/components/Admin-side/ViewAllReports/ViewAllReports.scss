@@ -1,6 +1,11 @@
 @import '../../general/general-styling.scss';
 
+h1{
+@include h1;
+}
+
 .reportList {
+
     margin: 0;
     padding-inline-start: 0px;
 
