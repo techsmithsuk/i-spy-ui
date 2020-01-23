@@ -20,12 +20,12 @@ export function PublicNavbar() {
                     <div>
                         <Link to="/admin/reports" className="nav-element">Reports</Link>
                     </div>
-                    <div className="super-admin">
+                    {/* <div className="super-admin">
                         <Link to="/admin/users" className="nav-element">Manage Users</Link>
                     </div>
                     <div className="super-admin">
                         <Link to="/admin/settings" className="nav-element">Admin Settings</Link>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="logOut" >
                     <Link to="/" className="nav-element" onClick={handleClick}>Log Out</Link>
