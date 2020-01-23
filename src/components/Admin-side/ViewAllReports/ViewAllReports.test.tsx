@@ -1,9 +1,9 @@
 import React from "react";
 import { render, wait } from "@testing-library/react"
 import {mockSuccessfulFetch, mockFailedFetch} from '../../general/helpers/fetchMocks';
-import { createBrowserHistory } from 'history';
-import { Router } from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
 import { ViewAllReports } from "./ViewAllReports";
+import { AuthContextProvider } from "../../AuthContext";
 
 describe('testing api', () => {
 
@@ -13,7 +13,11 @@ describe('testing api', () => {
     })
 
     it("should render Fetching data... while waiting", () => {
-        const reportsPage = render(<ViewAllReports/>);
+        const reportsPage = render(
+            <AuthContextProvider initialLoggedIn={true}>
+                <ViewAllReports/>
+            </AuthContextProvider>);
+
         expect(reportsPage.getByText("Fetching data...")).toBeInTheDocument();
     })
 
@@ -36,10 +40,17 @@ describe('testing api', () => {
         });
 
         mockSuccessfulFetch(reportList);
-        const history = createBrowserHistory();
-        const reportsPage = render(<Router history={history}><ViewAllReports/></Router>);
-        await wait(() => expect(reportsPage.getByText("Skip to my lou")).toBeInTheDocument);
-        await wait(() => expect(reportsPage.getByText("For the lols")).toBeInTheDocument);
+
+        const reportsPage = render(
+            <AuthContextProvider initialLoggedIn={true}>
+                <Router>
+                    <ViewAllReports/>
+                </Router>
+            </AuthContextProvider>);
+
+        await wait(() => expect(reportsPage.getByText("SUBMITTED REPORTS")).toBeInTheDocument());
+        await wait(() => expect(reportsPage.getByText("Skip to my lou")).toBeInTheDocument());
+        await wait(() => expect(reportsPage.getByText("For the lols")).toBeInTheDocument());
         await wait(() => expect(reportsPage.getAllByTestId("ReportCard")).toHaveLength(reportList.length));
     });
 
@@ -47,7 +58,11 @@ describe('testing api', () => {
     it("should shows an error message if the api call fails", async () => {
         mockFailedFetch();
 
-        const reportsPage = render(<ViewAllReports/>);
+        const reportsPage = render(
+            <AuthContextProvider initialLoggedIn={true}>
+                <ViewAllReports/>
+            </AuthContextProvider>);
+
         await wait(() => expect(reportsPage.getByText("Oh No!!! There was an error")).toBeInTheDocument());
     });
 });
