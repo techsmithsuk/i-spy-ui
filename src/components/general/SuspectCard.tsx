@@ -10,7 +10,7 @@ export function SuspectCard(props :SuspectCardProps) {
     return (
     <div className="suspectCard">
         <img src={props.image} alt="Suspect"/>
-        {props.name}
+        <p className="cardText">{props.name}</p>
     </div>
     )
 }

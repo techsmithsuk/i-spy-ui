@@ -16,7 +16,7 @@ interface LoadingComponentProps {
     fetchData: () => Promise<any>
     onFetchComplete: (data: any) => void,
     subscribesTo?: any[],
-    children: JSX.Element,
+    children: JSX.Element
 }
 
 function LoadingComponent(props: LoadingComponentProps): JSX.Element {
@@ -73,6 +73,7 @@ interface JsonSuspectResponse{
 }
 
 export function HomePage(props: HomePageProps) {
+    const [url, setUrl] = useState<string>(`${process.env.REACT_APP_API_URL}/suspects?page=1`);
     let initialObject :JsonSuspectResponse = {
         items : [],
         totalNumberOfItems: 0,
@@ -80,13 +81,26 @@ export function HomePage(props: HomePageProps) {
         nextPage: null
     }
     const [suspects, setSuspects] = useState<JsonSuspectResponse>(initialObject);
-    const url = `${process.env.REACT_APP_API_URL}/suspects?page=1`;
     
+    function getButtonClassName(button :string) :string{
+        if(button === "previous" && suspects.previousPage !== null){
+            return "indivPageButton"
+        }
+        if(button === "next" && suspects.nextPage !== null){
+            return "indivPageButton"
+        }
+        return "buttonInvisible"
+    }
+
     return (
-        <LoadingComponent fetchData={() => asyncJSONFetch(url)} onFetchComplete={setSuspects} subscribesTo={props.subscribesTo}>
+        <LoadingComponent fetchData={() => asyncJSONFetch(url)} onFetchComplete={setSuspects} subscribesTo={[props.subscribesTo,url]}>
             <div className="homepage">
                 <Title></Title>
                 <SuspectList suspects={suspects.items}/>
+                <div className = "pageButtons">
+                    <button className = {getButtonClassName("previous")} onClick={() => setUrl(`${process.env.REACT_APP_API_URL}${suspects.previousPage}`)}>PREVIOUS</button>
+                    <button className = {getButtonClassName("next")} onClick={() => setUrl(`${process.env.REACT_APP_API_URL}${suspects.nextPage}`)}>NEXT</button>
+                </div>
             </div>
         </LoadingComponent>
     );
