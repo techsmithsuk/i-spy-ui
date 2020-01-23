@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import './PublicNavbar.scss'
 import { AuthContext } from '../../AuthContext';
 

@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { asyncJSONFetch, asyncAdminJSONFetch } from '../../general/helpers/asyncJSONFetcher';
+import { asyncAdminJSONFetch } from '../../general/helpers/asyncJSONFetcher';
 import { Report } from '../../general/helpers/ReportInterface';
 import { ReportCard } from '../../general/Report/ReportCard';
 import '../ViewAllReports/ViewAllReports.scss';
 import { AuthContext } from '../../AuthContext';
-import { Redirect } from 'react-router-dom';
 
 
 export function ViewAllReports(){
