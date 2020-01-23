@@ -21,7 +21,7 @@ export function PublicNavbar() {
                         <Link to="/admin/reports" className="nav-element">Reports</Link>
                     </div>
                     <div className="super-admin">
-                        <Link to="/users" className="nav-element">Manage Users</Link>
+                        <Link to="/admin/users" className="nav-element">Manage Users</Link>
                     </div>
                     <div className="super-admin">
                         <Link to="/admin/settings" className="nav-element">Admin Settings</Link>

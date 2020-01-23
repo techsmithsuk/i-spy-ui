@@ -1,7 +1,7 @@
 import React from "react";
 import { render, wait, fireEvent } from "@testing-library/react"
-import { mockSuccessfulFetch, mockFailedFetch } from '../../general/helpers/fetchMocks';
-import { PublicHomepage } from "./PublicHomepage";
+import { mockSuccessfulFetch, mockFailedFetch, mockSuccessfulAdminFetch } from '../../general/helpers/fetchMocks';
+import { HomePage, AdminHomePage } from './PublicHomepage'
 import { MemoryRouter as Router } from "react-router-dom";
 import { AuthContextProvider} from "../../AuthContext";
 
@@ -13,7 +13,7 @@ describe('testing api', () => {
     })
 
     it("should render Fetching data... while waiting", () => {
-        const homepage = render(<PublicHomepage/>);
+        const homepage = render(<HomePage/>);
         expect(homepage.getByText("Fetching data...")).toBeInTheDocument();
     })
 
@@ -22,12 +22,16 @@ describe('testing api', () => {
             
         let suspectList :any[] = new Array();
 
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
-        mockSuccessfulFetch(suspectList);
+        let jsonResponse :any = ({"items":suspectList,
+                                    "totalNumberOfItems": 808,
+                                    "previousPage": null,
+                                    "nextPage": "/suspects?page=2&pageSize=10"})
+        mockSuccessfulFetch(jsonResponse);
     
-        const homepage = render(<Router><PublicHomepage/></Router>);
+        const homepage = render(<Router><HomePage/></Router>);
         await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument());
         await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument());
         await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
@@ -37,7 +41,7 @@ describe('testing api', () => {
     it("should shows an error message if the api call fails", async () => {
         mockFailedFetch();
 
-        const homepage = render(<PublicHomepage/>);
+        const homepage = render(<HomePage/>);
         await wait(() => expect(homepage.getByText("Oh No!!! There was an error")).toBeInTheDocument());
     });
 
@@ -45,15 +49,19 @@ describe('testing api', () => {
               
         let suspectList :any[] = new Array();
 
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
-        mockSuccessfulFetch(suspectList);
+        let jsonResponse :any = ({"items":suspectList,
+                                    "totalNumberOfItems": 808,
+                                    "previousPage": null,
+                                    "nextPage": "/suspects?page=2&pageSize=10"})
+        mockSuccessfulFetch(jsonResponse);
 
         const homepage = render(
         <AuthContextProvider initialLoggedIn={true}>
             <Router>
-                <PublicHomepage/>
+                <AdminHomePage/>
             </Router>
         </AuthContextProvider>);
 
@@ -68,18 +76,19 @@ describe('testing api', () => {
               
         let suspectList :any[] = new Array();
 
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
-        let successfulUpdate :any =({"Success":"No data has been added. Database Up to date."})
-
-        mockSuccessfulFetch(suspectList);
-        mockSuccessfulAdminFetch(successfulUpdate);
+        let jsonResponse :any = ({"items":suspectList,
+                                    "totalNumberOfItems": 808,
+                                    "previousPage": null,
+                                    "nextPage": "/suspects?page=2&pageSize=10"})
+        mockSuccessfulFetch(jsonResponse);
 
         const homepage = render(
         <AuthContextProvider initialLoggedIn={true}>
             <Router>
-                <PublicHomepage/>
+                <AdminHomePage/>
             </Router>
         </AuthContextProvider>);
 

@@ -36,7 +36,7 @@ function LoadingComponent(props: LoadingComponentProps): JSX.Element {
         case FetchStatus.FETCHING:
             return <div>Fetching data...</div>;
         case FetchStatus.ERROR:
-            return <div>Oh no! something went wrong.</div>;
+            return <div>Oh No!!! There was an error</div>;
         case FetchStatus.COMPLETE:
             return props.children;
     }
@@ -65,15 +65,28 @@ interface HomePageProps {
     subscribesTo?: any[],
 }
 
+interface JsonSuspectResponse{
+    items : Suspect[],
+    totalNumberOfItems: number,
+    previousPage: string | null,
+    nextPage: string | null
+}
+
 export function HomePage(props: HomePageProps) {
-    const [suspects, setSuspects] = useState<Suspect[]>([]);
+    let initialObject :JsonSuspectResponse = {
+        items : [],
+        totalNumberOfItems: 0,
+        previousPage: null,
+        nextPage: null
+    }
+    const [suspects, setSuspects] = useState<JsonSuspectResponse>(initialObject);
     const url = `${process.env.REACT_APP_API_URL}/suspects?page=1`;
     
     return (
         <LoadingComponent fetchData={() => asyncJSONFetch(url)} onFetchComplete={setSuspects} subscribesTo={props.subscribesTo}>
             <div className="homepage">
                 <Title></Title>
-                <SuspectList suspects={suspects}/>
+                <SuspectList suspects={suspects.items}/>
             </div>
         </LoadingComponent>
     );
@@ -96,7 +109,7 @@ export function AdminHomePage() {
     }
     
     return (
-        <div>
+        <div className="homepage">
             <HomePage subscribesTo={[updateListState]}/>
             <div className="buttons">
                 <button className="indivButton" onClick={handleUpdateList}>UPDATE LIST</button>
