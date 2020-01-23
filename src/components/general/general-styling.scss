@@ -30,7 +30,7 @@ $large-desktop-breakpoint: 1200px;
     font-size: 40px;
     text-align: center;
     margin:10px;
-    padding: 5px 0;
+  
     width:500px;
     }
 
@@ -47,6 +47,11 @@ $large-desktop-breakpoint: 1200px;
         border-color: $blue-color;
         border-radius: 10px;
         background-color: $blue-color;
+        &:hover {
+            background-color: blue;
+            border-color: blue;
+            transition-duration: 1s;
+        }
 }
 
 @mixin h1 {

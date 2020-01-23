@@ -1,53 +1,72 @@
 import React from 'react';
 import { SuspectProfile } from '../../general/helpers/SuspectProfileInterfaces';
-
 interface SuspectProfileTable {
     profile :SuspectProfile
 }
 
+interface TableRowProps {
+    heading: string,
+    testId: string,
+    value?: string,
+}
+
+function TableRow(props: TableRowProps) {
+    return (
+        <tr>
+            <th>{props.heading}</th>
+            <td data-testid={props.testId}>
+                {props.value || `No ${props.heading.toLowerCase()} given`}
+            </td>
+        </tr>
+    );
+}
+
 export function ProfileTable(props: SuspectProfileTable) {
     return (
-        <table>
-        <tr>
-            <th>Name</th>
-            <td>{props.profile.name}</td>
-        </tr>
-        <tr>
-            <th>Date(s) of Birth Used</th>
-            <td>{props.profile.dates_of_birth_used}</td>
-        </tr>
-        <tr>
-            <th>Place of Birth</th>
-            <td>{props.profile.place_of_birth}</td>
-        </tr>
-        <tr>
-            <th>Sex</th>
-            <td>{props.profile.sex}</td>
-        </tr>
-        <tr>
-            <th>Race</th>
-            <td>{props.profile.race}</td>
-        </tr>
-        <tr>
-            <th>Nationality</th>
-            <td>{props.profile.nationality}</td>
-        </tr>
-        <tr>
-            <th>Hair</th>
-            <td>{props.profile.hair}</td>
-        </tr>
-        <tr>
-            <th>Eyes</th>
-            <td>{props.profile.eyes}</td>
-        </tr>
-        <tr>
-            <th>Height</th>
-            <td>{props.profile.height}</td>
-        </tr>
-        <tr>
-            <th>Weight</th>
-            <td>{props.profile.weight}</td>
-        </tr>
-    </table> 
+        <div>
+            <div className="heading">
+            <h1>{props.profile.title}</h1>
+            <img src={props.profile.imageUrl} alt=""/>
+            </div>
+            <div>
+                {props.profile.warningMessage !=null ? <h2  className="warning" data-testid="profile-warning">{props.profile.warningMessage}</h2> : null}
+            </div>
+            <table>
+                <tbody>
+                    <TableRow heading="Name" value={props.profile.title} testId="profile-name" />
+                    <TableRow heading="Date(s) of Birth Used" value={props.profile.dateOfBirth} testId="profile-date-of-birth" />
+                    <TableRow heading="Sex" value={props.profile.sex} testId="profile-sex" />
+                    <TableRow heading="Race" value={props.profile.race} testId="profile-race" />
+                    <TableRow heading="Nationality" value={props.profile.nationality} testId="profile-nationality" />
+                    <TableRow heading="Hair" value={props.profile.hair} testId="profile-hair" />
+                    <TableRow heading="Eyes" value={props.profile.eyes} testId="profile-eyes" />
+                    <TableRow heading="Height" value={props.profile.height} testId="profile-height" />
+                    <TableRow heading="weight" value={props.profile.weight} testId="profile-weight" />
+                </tbody>
+            </table>    
+            <table className="cautionTable"> 
+                <tbody>
+                    {props.profile.details &&
+                    <div>
+                        <tr>
+                        <th className="cautionHeading"><h1 className="details" data-testid="profile-details">DETAILS</h1></th>
+                        </tr>
+                        <tr>
+                        <td className="cautionDescription" data-testid="profile-caution">{props.profile.details}</td>
+                        </tr>
+                    </div>}
+                    
+                    {props.profile.caution &&
+                    <div>
+                        <tr>
+                            <th className="cautionHeading"><h1 className="caution">CAUTION</h1></th>
+                        </tr>
+                        <tr>
+                        <td className="cautionDescription">{props.profile.caution}</td>
+                        </tr>
+                    </div>}
+                </tbody>
+            </table> 
+        </div>
     );
   }

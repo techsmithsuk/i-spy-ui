@@ -28,9 +28,17 @@ const App: React.FC = () => {
           <Route exact path="/profile/:id">
             <PublicProfilePage/>
           </Route>
-             
-          <AdminPages/>
 
+          <Route exact path="/reports">
+          </Route>
+
+
+
+          <Route exact path="/admin">
+          </Route>
+
+          
+          
         </Switch>
         
       </Router>

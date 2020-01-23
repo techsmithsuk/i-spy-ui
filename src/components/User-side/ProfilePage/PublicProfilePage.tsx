@@ -1,25 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './PublicProfilePage.scss';
 import { ProfileTable } from './ProfileTable';
-import { ReportSightingButton } from './ReportSightingButton';
 import { SuspectProfile, fetchProfileData } from '../../general/helpers/SuspectProfileInterfaces';
 import { useParams } from 'react-router-dom';
+import { CreateReportPage } from './CreateReport';
 
 
 export function PublicProfilePage() {
     let { id } = useParams();    
     const [suspectProfile, setSuspectProfile] = useState<SuspectProfile | null>(null);
-    // const [error, setError] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => { 
         fetchProfileData(id!!)            
             .then(jsonResponse => setSuspectProfile(jsonResponse))   
-            // .catch(() => setError(true))          
+            .catch(() => setError(true))          
     }, [id]); 
-    // TODO: Uncomment when using API call
-    // if (error) { 
-    //     return <div>Oh No!!! There was an error</div> 
-    // }
+
+    if (error) { 
+        return <div>Oh No!!! There was an error</div> 
+    }    
 
     if (!suspectProfile){
         return (
@@ -28,13 +28,11 @@ export function PublicProfilePage() {
     }
 
     return (
-        <div className="profilePage" data-testid = "ProfilePage">
+        <main className="profilePage" data-testid = "ProfilePage">
             <div className="content">
-            <h1>{suspectProfile.name}</h1>
-            <img src={suspectProfile.imageUrl} alt=""/>
-            <ProfileTable profile={suspectProfile}/>
-            <ReportSightingButton/>
-        </div>
-    </div>
+                <ProfileTable profile={suspectProfile}/>
+                <CreateReportPage/>
+            </div>
+        </main>
     )
 }
