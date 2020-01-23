@@ -3,10 +3,15 @@
 .profilePage {
     display: flex;
     justify-content: center;
+    font-family: $body-text;
 
     h1 {
         @include h1;
-        margin-bottom: 20px;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        padding-left: 5px;
     }
 
     img {
@@ -19,47 +24,104 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 50px;
+
+        @media screen and (min-width: $tablet-breakpoint) {
+            width: 60%
+        }
     }
 
 
     table {
         text-align: left;
         width: 100%;
-        padding-bottom: 50px;
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    
+    th {
+        width: 50%;
     }
 
     th,td {
-        border-bottom: 3px solid black;
+        border-bottom: 2px solid grey;
         padding: 10px;
     }
-
-    .reportSightingButton {
-        text-align: center;
-
-        .indivButton {
-            position: -webkit-sticky;
-            position: sticky;
-            bottom: 0;
-
-            @include indivButton;
-            width:80%;
-            font-size: 20px;
-            padding: 5px 50px;
-
-            @media screen and (min-width: $tablet-breakpoint) {
-                width:70%;
-                font-size:30px;
-                padding-left: 100px;
-                padding-right: 100px;
-            }
-
-            @media screen and (min-width: $desktop-breakpoint) {
-                width:60%;
-                font-size:35px;
-                padding-left: 200px;
-                padding-right: 200px;
-            }
-                
-        }
+    
+    section {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        text-align: left;
+        width: 100%;
     }
+
+    form {
+        font-family: $body-text;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    input {
+        margin-left: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+        font-family: $button-text;
+        font-size: 30px;
+    }
+
+    textarea {
+        width:100%;
+        height: 120px;
+        font-family: $button-text;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+
+    .submit {
+        @include smallBlueButton;
+        margin: auto;
+        
+    }
+
+    .caution {
+        width: 100%;
+        text-align: center;
+        color: $button-color;
+        margin-bottom: 0;
+        border-collapse: collapse;
+    }
+
+    .details {
+        color: $blue-color;
+        margin-bottom: 0;
+    }
+
+    .cautionDescription {
+        border-collapse: collapse;
+    }
+
+    .cautionTable {
+        padding-bottom: 50px;
+    }
+
+    .warning {
+        @include indivButton;
+        width: 100%;
+        margin-bottom: 50px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+    }
+
+    .reportSent {
+        font-size: 30px;
+        text-align: center;
+    }
+    
+
 }
