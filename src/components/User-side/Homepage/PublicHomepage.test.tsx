@@ -23,8 +23,8 @@ describe('testing api', () => {
             
         let suspectList :any[] = new Array();
 
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
         mockSuccessfulFetch(suspectList);
     
@@ -46,8 +46,8 @@ describe('testing api', () => {
               
         let suspectList :any[] = new Array();
 
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
         mockSuccessfulFetch(suspectList);
 
