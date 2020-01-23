@@ -17,4 +17,5 @@ export interface Suspect {
     fbiUid: string,
     modified: string,
     publication: string,
+    imageUrl: string
 }
