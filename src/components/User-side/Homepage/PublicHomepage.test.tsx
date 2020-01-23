@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { render, wait } from "@testing-library/react"
 import {mockSuccessfulFetch, mockFailedFetch} from '../../general/helpers/fetchMocks';
 import { PublicHomepage } from "./PublicHomepage";
 import { createBrowserHistory } from 'history';
-import { BrowserRouter as Router } from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
+import { AuthContextProvider, AuthContext } from "../../AuthContext";
 
 describe('testing api', () => {
 
@@ -21,12 +22,16 @@ describe('testing api', () => {
     it("should render the response when returns correctly", async () => {
             
         let suspectList :any[] = new Array();
+        
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
 
-        suspectList.push({"id":1,"name":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-        suspectList.push({"id":1,"name":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
-
-        mockSuccessfulFetch(suspectList);
-        const history = createBrowserHistory();
+        let jsonResponse :any = ({"items":suspectList,
+                                    "totalNumberOfItems": 808,
+                                    "previousPage": null,
+                                    "nextPage": "/suspects?page=2&pageSize=10"})
+        mockSuccessfulFetch(jsonResponse);
+    
         const homepage = render(<Router><PublicHomepage/></Router>);
         await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
         await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
@@ -39,5 +44,32 @@ describe('testing api', () => {
 
         const homepage = render(<PublicHomepage/>);
         await wait(() => expect(homepage.getByText("Oh No!!! There was an error")).toBeInTheDocument());
+    });
+
+    it("should show Update List and Add New Profile buttons when logged in", async () => {
+              
+        let suspectList :any[] = new Array();
+        
+        suspectList.push({"id":1,"title":"Harry Potter","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+        suspectList.push({"id":1,"title":"James Cameron","imageUrl":"https://www.fbi.gov/wanted/additional/cesar-munguia/@@images/image/thumb"});
+
+        let jsonResponse :any = ({"items":suspectList,
+                                    "totalNumberOfItems": 808,
+                                    "previousPage": null,
+                                    "nextPage": "/suspects?page=2&pageSize=10"})
+        mockSuccessfulFetch(jsonResponse);
+
+        const homepage = render(
+        <AuthContextProvider initialLoggedIn={true}>
+            <Router>
+                <PublicHomepage/>
+            </Router>
+        </AuthContextProvider>);
+
+        await wait(() => expect(homepage.getByText("Harry Potter")).toBeInTheDocument);
+        await wait(() => expect(homepage.getByText("James Cameron")).toBeInTheDocument);
+        await wait(() => expect(homepage.getAllByTestId("SuspectCard")).toHaveLength(suspectList.length));
+        await wait(() => expect(homepage.getByText("UPDATE LIST")).toBeInTheDocument);
+        await wait(() => expect(homepage.getByText("ADD NEW PROFILE")).toBeInTheDocument);
     });
 });

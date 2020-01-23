@@ -35,7 +35,7 @@ export function ViewAllReports(){
 
             <ol className="reportList"> 
                 {reportList.map(report => <div className ="reportIndiv" data-testid = "ReportCard">
-                    <ReportCard dateOf = {report.dateOfSighting} place = {report.location} description={report.description} timeSubmitted={report.timestampSubmitted} suspectId={report.suspectId} /></div>)}
+                    <ReportCard report={report}/></div>)}
             </ol>
         </div>
     )
