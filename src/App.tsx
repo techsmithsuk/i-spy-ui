@@ -1,13 +1,15 @@
 import React, { useContext } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { PublicHomepage } from './components/User-side/Homepage/PublicHomepage'
+import { HomePage, AdminHomePage } from './components/User-side/Homepage/PublicHomepage'
 import { PublicProfilePage } from './components/User-side/ProfilePage/PublicProfilePage';
 import { PublicNavbar } from './components/general/navbar/PublicNavbar';
 import { LoginPage } from './components/LoginPage/LoginPage';
 import { AuthContext, AuthContextProvider } from './components/AuthContext';
+import { ViewAllReports } from './components/Admin-side/ViewAllReports/ViewAllReports';
+
 const App: React.FC = () => {
-  const context = useContext(AuthContext);
+  
   return (
     <AuthContextProvider>
       <Router>
@@ -16,7 +18,7 @@ const App: React.FC = () => {
         <Switch>
           
           <Route exact path="/">
-            <PublicHomepage/>
+            <HomePage/>
           </Route>
           
           <Route exact path="/login">
@@ -43,5 +45,26 @@ const App: React.FC = () => {
     </AuthContextProvider>
   );
 }
+
+export function AdminPages() {
+  const context = useContext(AuthContext);
+  if (!context.loggedIn) {
+    return <LoginPage/>
+  }
+
+  return (
+    <div>
+      <Route exact path="/admin/reports">
+        <ViewAllReports/>
+      </Route>
+
+      <Route exact path="/admin">
+        <AdminHomePage/>
+      </Route>
+    </div>
+  );
+}
+
 export default App;
+
 

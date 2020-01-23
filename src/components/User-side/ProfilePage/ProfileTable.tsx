@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SuspectProfile } from '../../general/helpers/SuspectProfileInterfaces';
 interface SuspectProfileTable {
     profile :SuspectProfile

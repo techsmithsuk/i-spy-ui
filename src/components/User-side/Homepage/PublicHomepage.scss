@@ -15,12 +15,10 @@
     }
 
     .suspectCardIndiv{
-        flex-basis: 20%;
-        display: flex;
         justify-content: center;
-        text-decoration: none;
-        color: $black-color;
-    }
+             text-decoration: none;
+             color: $black-color;
+         }
 
     .buttons {
         display: flex;
@@ -29,5 +27,22 @@
         .indivButton{
             @include indivButton;
         }
+    }
+    .pageButtons{
+        text-align: center;
+    }
+
+    .indivPageButton{
+        @include  smallBlueButton;
+        margin-left: 25px;
+        margin-right: 25px;
+        width:220px;
+        margin-bottom: 40px;
+    }
+    .buttonInvisible{
+        width:220px;
+        @include  smallBlueButton;
+        opacity:0.2;
+        pointer-events: none;
     }
 }

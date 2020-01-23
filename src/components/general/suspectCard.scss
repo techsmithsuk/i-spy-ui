@@ -3,11 +3,31 @@
 .suspectCard {
     font-family: $body-text;
     font-size: 20px;
-    width: 200px;
+    max-width: 275px;
+    max-height: 350px;
+    height: 350px;
     text-align: center;
-    margin: 1em;
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    .cardText{
+        white-space: nowrap;
+        overflow: hidden;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+    &:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
     img {
-    width:100%;
-       margin-bottom: 5px;
+    object-fit: cover;
+       margin-bottom: 20px;
+       height: 250px;
+       width: 275px;
+       filter: grayscale(60%);    
+       &:hover {
+           filter: grayscale(0%);                
+       }
     }
 }

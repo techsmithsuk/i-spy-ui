@@ -32,7 +32,7 @@ export function LoginPage(){
     }
     
     if(context.loggedIn){
-        return (<Redirect to ="/"/>)
+        return (<Redirect to ="/admin"/>)
     } 
     
     else if(error){
