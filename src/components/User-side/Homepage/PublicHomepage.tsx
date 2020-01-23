@@ -39,7 +39,7 @@ export function PublicHomepage(){
 
                 <ol className="suspectCardList"> 
                     {suspectList.map(suspect => <div className ="suspectCardIndiv" data-testid = "SuspectCard">
-                        <SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></div>)}
+                        <SuspectCard name = {suspect.title} image = "suspect image"/></div>)}
                 </ol>
 
                 <div className="buttons">
@@ -57,7 +57,7 @@ export function PublicHomepage(){
             <h1>FBI Most Wanted</h1>
 
             <ol className="suspectCardList"> 
-                {suspectList.map(suspect => <Link to={`/profile/${suspect.id}`} className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.name} image = {suspect.imageUrl}/></Link>)}
+                {suspectList.map(suspect => <Link to={`/profile/${suspect.id}`} className ="suspectCardIndiv" data-testid = "SuspectCard"><SuspectCard name = {suspect.title} image = "suspect image"/></Link>)}
             </ol>
         </div>
     )
