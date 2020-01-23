@@ -21,7 +21,7 @@ export function CreateReportPage(){
         formData.append('description', additionalInfo);
 
         try{
-            await asyncJSONPostFetch(`http://localhost:8080/reports/create`, formData)
+            await asyncJSONPostFetch(`${process.env.REACT_APP_API_URL}/reports/create`, formData)
             // alert ("Sighting successfully reported")
             setReportSent(true);
             setError(false);
