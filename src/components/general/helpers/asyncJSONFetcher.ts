@@ -15,5 +15,6 @@ export async function asyncJSONPostFetch(url: string, data: FormData) {
         method:'POST',
         body: data
     })
+    console.log(response)
     return await response.json();
 }

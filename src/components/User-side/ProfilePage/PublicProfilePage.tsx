@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './PublicProfilePage.scss';
 import { ProfileTable } from './ProfileTable';
-import { ReportSightingButton } from './ReportSightingButton';
 import { SuspectProfile, fetchProfileData } from '../../general/helpers/SuspectProfileInterfaces';
 import { useParams } from 'react-router-dom';
 import { CreateReportPage } from './CreateReport';
@@ -31,8 +30,6 @@ export function PublicProfilePage() {
     return (
         <main className="profilePage" data-testid = "ProfilePage">
             <div className="content">
-                <h1>{suspectProfile.title}</h1>
-                <img src={suspectProfile.imageUrl} alt=""/>
                 <ProfileTable profile={suspectProfile}/>
                 <CreateReportPage/>
             </div>
